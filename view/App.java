@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import model.Punto;
 
 /**
  * Write a description of class Ventana here.
@@ -54,8 +55,8 @@ public class App extends JFrame {
         if (plane.getGraphicShape() instanceof GraphicLine) {
             model.algorithms.LineAlgorithm a = (model.algorithms.LineAlgorithm)algorithm;
             GraphicLine gL = (GraphicLine)plane.getGraphicShape();
-            Point start = gL.startPoint();
-            Point end = gL.endPoint();
+            Punto start = gL.startPoint();
+            Punto end = gL.endPoint();
             int xI = (int)start.getX();
             int yI = (int)start.getY();
             int xF = (int)end.getX();
@@ -64,7 +65,7 @@ public class App extends JFrame {
         } else if (plane.getGraphicShape() instanceof GraphicCircle) {
             model.algorithms.CircleAlgorithm a = (model.algorithms.CircleAlgorithm)algorithm;
             GraphicCircle gC = (GraphicCircle)plane.getGraphicShape();
-            Point center = gC.center();
+            Punto center = gC.center();
             int xC = (int)center.getX();
             int yC = (int)center.getY();
             int radio = gC.radio();

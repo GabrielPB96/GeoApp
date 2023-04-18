@@ -4,7 +4,7 @@ import java.awt.Stroke;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.Color;
-import java.awt.Point;
+import model.Punto;
 
 
 /**
@@ -23,12 +23,12 @@ public class GraphicLine extends GraphicsShape {
         this.yF = yF;
     }
     
-    public Point startPoint () {
-        return new Point(xI, yI);    
+    public Punto startPoint () {
+        return new Punto(xI, yI);    
     }
     
-    public Point endPoint () {
-        return new Point(xF, yF);    
+    public Punto endPoint () {
+        return new Punto(xF, yF);    
     }
     
     @Override

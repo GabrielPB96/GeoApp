@@ -4,7 +4,7 @@ import model.Punto;
 import java.util.ArrayList;
 
 import model.algorithms.CircleAlgorithm;
-import model.algorithms.CircleMidPunto;
+import model.algorithms.CircleMidPoint;
 
 public class Circle extends Shape {
     private Punto center;
@@ -16,7 +16,7 @@ public class Circle extends Shape {
     }
     
     public Circle(Punto center, int radio) {  
-        this(center, radio, new CircleMidPunto());
+        this(center, radio, new CircleMidPoint());
     }
     
     public void fill () {

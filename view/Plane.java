@@ -5,13 +5,14 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.awt.event.ComponentEvent;
+import model.Punto;
 
 public class Plane extends JPanel implements LayoutManager
 {
     final int LY = Constants.LY;
     final int LX = Constants.LX;
     int GRID_SCALE = Constants.GRID_SCALE;
-    private ArrayList<Point> points;
+    private ArrayList<Punto> points;
     private Stack<Pixel> pixeles, pixelesOrigen;
     private ArrayList<Pixel> pixelesGrilla;
     private GraphicsShape graphic;
@@ -46,7 +47,7 @@ public class Plane extends JPanel implements LayoutManager
     }
     
     public void clearPoints () {
-        points = new ArrayList<Point>();
+        points = new ArrayList<Punto>();
         pixeles = new Stack<Pixel>();
         indexPixel = 0;
         repaint();
@@ -60,7 +61,7 @@ public class Plane extends JPanel implements LayoutManager
         return graphic;
     }
     
-    public void setPoints (ArrayList<Point> points) {
+    public void setPoints (ArrayList<Punto> points) {
         indexPixel = 0;
         this.points = points;
         pixeles.clear();

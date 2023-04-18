@@ -3,7 +3,7 @@ package view;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.BasicStroke;
-import java.awt.Point;
+import model.Punto;
 
 
 /**
@@ -21,8 +21,8 @@ public class GraphicCircle extends GraphicsShape {
         this.radio = radio;
     }
     
-    public Point center () {
-        return new Point(xC, yC);
+    public Punto center () {
+        return new Punto(xC, yC);
     }
     
     public int radio () {
