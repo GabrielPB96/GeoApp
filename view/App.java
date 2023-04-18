@@ -24,7 +24,7 @@ public class App extends JFrame {
     private OptionsAttributes opsAttributes;
 
     public App () {
-        super("Algoritmos de la Recta");
+        super("GeoApp");
         setLayout(new BorderLayout(10,10));
         
         shape = new model.LineShape();

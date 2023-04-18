@@ -31,7 +31,13 @@ public class ControllerAttributes implements ActionListener, ItemListener {
         Object src = itemEvent.getSource();
         
         if (src.equals(fill)) {
-            System.out.println(itemEvent.getStateChange());
+            /*if(itemEvent.getStateChange() == 1) {
+                plane.getCurrentShape().fill();
+                plane.updateUI();
+            }else {
+                plane.getCurrentShape().unFill();
+                plane.updateUI();
+            }*/
         }
     }
 }

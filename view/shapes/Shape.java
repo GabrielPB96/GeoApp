@@ -33,6 +33,10 @@ public abstract class Shape extends JComponent {
     
     public abstract void fill ();
     
+    public void unFill() {
+        pointsFill.clear();
+    }
+    
     protected void cuatro_vecinos(int x, int y) {
         Punto p = new Punto(x, y);
         if (!pointsBorder.contains(p) && !pointsFill.contains(p)) {
