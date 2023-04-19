@@ -27,8 +27,8 @@ public class Controller {
         header = this.app.getHeader();
         plane = this.app.getPlane();
         ctrAttributes = new ControllerAttributes(plane, this.app.getOpsAttributes());
-        ArrayList<JTextField> inputs = header.getInput().getInputs();
-        inputL = new InputListener(inputs, this.app);
+        //ArrayList<JTextField> inputs = header.getInput().getInputs();
+        //inputL = new InputListener(inputs, this.app);
         buttonsL = new ButtonListener(this.app);
         planeL = new PlaneListener(this.app, plane);
         optionShapeL = new OptionShape(header.getOpAlgorithm().getOptionsShape(), new model.ShapeMap()){
@@ -49,7 +49,7 @@ public class Controller {
     
     public void updateShape (model.Shape shape) {
         app.setShape(shape);
-        app.setTitle(app.getModelShape().getTitle());
+        //app.setTitle(app.getModelShape().getTitle());
         header.getOpAlgorithm().setOptionsAlgorithms(header.optionsNameAlgorithms(app.getModelShape().getAlgorithms()));
         header.setShape(app.getModelShape());
         //ArrayList<JTextField> inputs = header.getInput().getInputs();

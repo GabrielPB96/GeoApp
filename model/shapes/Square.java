@@ -42,8 +42,9 @@ public class Square extends Shape {
     }
     
     public void fill () {
-        int x = (int)topLeftVertex.getX() + (int)(bottomRightVertex.getX() - topLeftVertex.getX()) / 2;
-        int y = (int)topLeftVertex.getY() - (int)(topLeftVertex.getY() - bottomRightVertex.getY()) / 2;
+        Punto center = calculateCenterPoint();
+        int x = (int)center.getX();
+        int y = (int)center.getY();
         cuatro_vecinos(x, y);
     }
 }

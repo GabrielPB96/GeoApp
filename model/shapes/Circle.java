@@ -29,15 +29,16 @@ public class Circle extends Shape
     }
     
     public void recalcular (){
-        Punto pRadio = new Punto((int)center.getX() + radio, (int)center.getY() + radio);
+        Punto pRadio = new Punto((int)center.getX(), (int)center.getY() + radio);
         int x1 = (int)(pRadio.getX() * factorEscalacion + center.getX() * (1 - factorEscalacion));
         int y1 = (int)(pRadio.getY() * factorEscalacion + center.getY() * (1 - factorEscalacion));
         pRadio.setLocation(x1, y1);
         int r = (int)center.distance(pRadio);
-        points= ((CircleAlgorithm)algorithm).generatePoints((int) center.getX(), (int) center.getY(), r);
+        points = ((CircleAlgorithm)algorithm).generatePoints((int) center.getX(), (int) center.getY(), r);
     }
     
     public void fill () {
+        System.out.println(((int)center.getX()+", "+(int)center.getY()));
         cuatro_vecinos((int)center.getX(), (int)center.getY());
     }
 }

@@ -30,7 +30,7 @@ public class App extends JFrame {
         shape = new model.LineShape();
         algorithm = shape.getAlgorithms().get(0);
         
-        header = new Header(algorithm.getTitle(), shape);
+        header = new Header("Graficacion :)", shape);
         plane = new Plane();
         crtAnimation = new ControlsAnimation();
         opsAttributes = new OptionsAttributes();

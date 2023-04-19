@@ -25,18 +25,29 @@ public class Triangle extends Shape {
     }
     
     public Punto calculateCenterPoint () {
-        return null;
+        int x = (int)((vertexA.getX() + vertexB.getX() + vertexC.getX()) / 3);
+        int y = (int)((vertexA.getY() + vertexB.getY() + vertexC.getY()) / 3);
+        return new Punto(x, y);
     }
     
     public void recalcular (){
-        points = ((TriangleAlgorithm)algorithm).generatePoints((int) vertexA.getX(), (int) vertexA.getY(), (int) vertexB.getX(),
-        (int) vertexB.getY(), (int) vertexC.getX(),
-        (int) vertexC.getY());
+        Punto center = calculateCenterPoint();
+        int x1 = (int)(vertexA.getX()*factorEscalacion + center.getX() * (1 - factorEscalacion));
+        int y1 = (int)(vertexA.getY()*factorEscalacion + center.getY() * (1 - factorEscalacion));
+        
+        int x2 = (int)(vertexB.getX()*factorEscalacion + center.getX() * (1 - factorEscalacion));
+        int y2 = (int)(vertexB.getY()*factorEscalacion + center.getY() * (1 - factorEscalacion));
+        
+        int x3 = (int)(vertexC.getX()*factorEscalacion + center.getX() * (1 - factorEscalacion));
+        int y3 = (int)(vertexC.getY()*factorEscalacion + center.getY() * (1 - factorEscalacion));
+        points = ((TriangleAlgorithm)algorithm).generatePoints(x1, y1, x2, y2, x3, y3);
     }
     
     public void fill () {
-        int x = (int)vertexB.getX();
-        int y = (int)vertexB.getY() - (int)(vertexB.getY() - vertexA.getY()) / 2;
+        Punto center = calculateCenterPoint();
+        int x = (int)center.getX();
+        int y = (int)center.getY();
+        System.out.println(x+", "+y);
         cuatro_vecinos(x, y);
     }
 }

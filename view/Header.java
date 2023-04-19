@@ -13,18 +13,14 @@ public class Header extends JPanel{
     private Title title;
     private OptionsAlgorithm oA;
     private JPanel containerO;
-    private Input input;
     public Header (String textTitle,model.Shape shape) {
         setLayout(new GridLayout(2, 1));
         containerO = new JPanel(new GridLayout(1, 2));
         //revisar
         String[] s = {"Line", "Circle", "Square", "Triangle"};
         
-        oA = new OptionsAlgorithm(s, optionsNameAlgorithms(shape.getAlgorithms()));
-        input = getInput(shape);
-        
+        oA = new OptionsAlgorithm(s, optionsNameAlgorithms(shape.getAlgorithms()));        
         containerO.add(oA);
-        containerO.add(input);
         
         title = new Title(textTitle);
         
@@ -35,9 +31,9 @@ public class Header extends JPanel{
     }
     
     public void setShape (model.Shape s) {
-        containerO.remove(1);
+        /*containerO.remove(1);
         input = getInput(s);
-        containerO.add(input);
+        containerO.add(input);*/
     }
     
     //TODO: revisar :|
@@ -62,10 +58,6 @@ public class Header extends JPanel{
     
     public OptionsAlgorithm getOpAlgorithm () {
         return oA;
-    }
-    
-    public Input getInput () {
-        return input;
     }
     
     public void setTitleAlgorithm (String text) {

@@ -65,10 +65,9 @@ public abstract class Shape {
     public abstract Punto calculateCenterPoint ();    
     
     public void build() {
+        recalcular();
         if (rellenado && tipoTrazado == TipoTrazado.CONTINUO) {
             fill();
-        }else {
-            recalcular();
         }
         calcularGrosor();
         calcularTipoTrazado ();
