@@ -79,6 +79,7 @@ public class OptionsAttributes extends JPanel{
         for (double i=0.5; i<=5; i+=0.5) {
             escala.addItem(i);
         }
+        escala.setSelectedItem(1.0);
         createHorizontalPanel(escalaPanel, new JComponent[]{escalaLabel, escala});
     }
     

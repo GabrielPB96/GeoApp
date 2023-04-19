@@ -11,6 +11,7 @@ public abstract class Shape {
     protected Color color;
     protected boolean rellenado;
     protected TipoTrazado tipoTrazado;
+    protected double factorEscalacion;
     
     protected Algorithm algorithm;
     
@@ -18,6 +19,7 @@ public abstract class Shape {
         points = new ArrayList<Punto>();
         vertexs = new ArrayList<Punto>();
         grosor = 1;
+        factorEscalacion = 1;
         color = new Color(100, 50, 100);
         tipoTrazado = TipoTrazado.CONTINUO;
         rellenado = false;
@@ -45,23 +47,11 @@ public abstract class Shape {
     public ArrayList<Punto> getVertexs () {
         return vertexs;
     }
-    
-    public abstract void fill ();
-    public abstract Punto calculateCenterPoint ();
-    
+
     public void trasladar (int dx, int dy) {}
     
     public void escalar (double s) {
-        Punto center = calculateCenterPoint();
-        System.out.println(s);
-        vertexs.forEach((v)->{
-            int x = (int)v.getX();
-            int y = (int)v.getY();
-            int x1, y1;
-            x1 = (int)(x*s + center.getX() * (1 - s));
-            y1 = (int)(y*s + center.getY() * (1 - s));
-            v.setLocation(x1, y1);
-        });
+        factorEscalacion = s;
     }
     
     public void rotar (double grados) {}
@@ -71,6 +61,8 @@ public abstract class Shape {
     public void calcularTipoTrazado () {}
     
     public abstract void recalcular ();
+    public abstract void fill ();
+    public abstract Punto calculateCenterPoint ();    
     
     public void build() {
         if (rellenado && tipoTrazado == TipoTrazado.CONTINUO) {

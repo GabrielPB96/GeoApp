@@ -33,8 +33,12 @@ public class Square extends Shape {
     }
     
     public void recalcular () {
-        points = ((SquareAlgorithm)algorithm).generatePoints((int) topLeftVertex.getX(), (int) topLeftVertex.getY(), (int) bottomRightVertex.getX(),
-                (int) bottomRightVertex.getY());
+        Punto center = calculateCenterPoint();
+        int x1 = (int)(topLeftVertex.getX() * factorEscalacion + center.getX() * (1 - factorEscalacion));
+        int y1 = (int)(topLeftVertex.getY() * factorEscalacion + center.getY() * (1 - factorEscalacion));
+        int x2 = (int)(bottomRightVertex.getX() * factorEscalacion + center.getX() * (1 - factorEscalacion));
+        int y2 = (int)(bottomRightVertex.getY() * factorEscalacion + center.getY() * (1 - factorEscalacion));
+        points = ((SquareAlgorithm)algorithm).generatePoints(x1, y1, x2, y2);
     }
     
     public void fill () {
