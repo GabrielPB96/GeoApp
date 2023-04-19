@@ -7,16 +7,16 @@ package controller;
  * @author (your name)
  * @version (a version number or a date)
  */
-import java.awt.Point;
+import model.Punto;
 import java.awt.Color;
 import view.GraphicSquare;
 import view.GraphicTriangle;
 import view.GraphicsShape;
-import view.shapes.Shape;
-import view.shapes.Triangle;
+import view.shapes.ShapeView;
+import view.shapes.TriangleView;
 
 public class TriangleInput extends InputShape {
-    private Point vertexA, vertexB, vertexC;
+    private Punto vertexA, vertexB, vertexC;
     
     public TriangleInput () {
         minCantPoints = 2;
@@ -30,8 +30,8 @@ public class TriangleInput extends InputShape {
         return inputs.size() >= 2;
     }
     
-    public Shape getShape () {
-        return new Triangle(vertexA, vertexB, vertexC);
+    public ShapeView getShape () {
+        return new TriangleView(vertexA, vertexB, vertexC);
     }
     
     public void setInputs () {

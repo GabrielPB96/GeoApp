@@ -76,7 +76,7 @@ public class OptionsAttributes extends JPanel{
         escalaPanel = new JPanel();
         escalaLabel = new JLabel("Escala: ");
         escala = new JComboBox();
-        for (int i=1; i<=10; i++) {
+        for (double i=0.5; i<=5; i+=0.5) {
             escala.addItem(i);
         }
         createHorizontalPanel(escalaPanel, new JComponent[]{escalaLabel, escala});
@@ -195,5 +195,9 @@ public class OptionsAttributes extends JPanel{
     //**************************************************************
     public JCheckBox getFillCheck () {
         return fill;
+    }
+    
+    public JComboBox getEscala () {
+        return escala;
     }
 }

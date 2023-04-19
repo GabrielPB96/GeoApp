@@ -3,8 +3,8 @@ import model.Punto;
 import java.awt.Color;
 import view.GraphicLine;
 import view.GraphicsShape;
-import view.shapes.Shape;
-import view.shapes.Line;
+import view.shapes.ShapeView;
+import view.shapes.LineView;
 
 /**
  * Write a description of class LineInput here.
@@ -30,8 +30,8 @@ public class LineInput extends InputShape {
         return inputs.size() >= 1;
     }
     
-    public Shape getShape () {
-        if(start != null && end != null) return new Line(start, end);
+    public ShapeView getShape () {
+        if(start != null && end != null) return new LineView(start, end);
         return null;
     }
     

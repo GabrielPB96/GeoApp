@@ -4,8 +4,8 @@ import java.awt.Color;
 import view.GraphicSquare;
 import view.GraphicLine;
 import view.GraphicsShape;
-import view.shapes.Shape;
-import view.shapes.Square;
+import view.shapes.ShapeView;
+import view.shapes.SquareView;
 
 
 /**
@@ -32,8 +32,8 @@ public class SquareInput extends InputShape {
         return inputs.size() >= 1;
     }
     
-    public Shape getShape () {
-        if(topLeftVertex != null && bottomRightVertex != null) return new Square(topLeftVertex, bottomRightVertex);
+    public ShapeView getShape () {
+        if(topLeftVertex != null && bottomRightVertex != null) return new SquareView(topLeftVertex, bottomRightVertex);
         return null;
     }
     

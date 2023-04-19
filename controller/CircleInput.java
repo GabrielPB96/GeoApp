@@ -3,8 +3,8 @@ import model.Punto;
 import java.awt.Color;
 import view.GraphicCircle;
 import view.GraphicsShape;
-import view.shapes.Shape;
-import view.shapes.Circle;
+import view.shapes.ShapeView;
+import view.shapes.CircleView;
 
 public class CircleInput extends InputShape {
     private Punto center;
@@ -25,8 +25,8 @@ public class CircleInput extends InputShape {
         return inputs.size() >= 1;
     }
     
-    public Shape getShape () {
-        if(center != null && radio != null) return new Circle(center, radio);
+    public ShapeView getShape () {
+        if(center != null && radio != null) return new CircleView(center, radio);
         return null;
     }
     

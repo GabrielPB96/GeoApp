@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import view.GraphicsShape;
-import view.shapes.Shape;
+import view.shapes.ShapeView;
 
 import model.Punto;
 
@@ -16,14 +16,14 @@ import model.Punto;
 public abstract class InputShape {
     protected ArrayList<Punto> inputs;
     protected GraphicsShape graphic;
-    protected Shape shape;
+    protected ShapeView shape;
     protected int minCantPoints;
     public InputShape () {
         minCantPoints = 1;
         inputs = new ArrayList<Punto>();
     }
     
-    public abstract Shape getShape ();
+    public abstract ShapeView getShape ();
     
     public abstract void setInputs ();
     

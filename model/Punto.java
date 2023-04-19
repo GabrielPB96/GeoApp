@@ -12,8 +12,8 @@ public class Punto extends Point{
     public Punto(int x, int y) {
         super(x, y);
     }
-    //int o float -> falta definir
-    public void rotate (int grados) {
+
+    public void rotate (double grados) {
         
     }
     

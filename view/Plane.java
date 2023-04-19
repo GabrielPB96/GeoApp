@@ -18,7 +18,7 @@ public class Plane extends JPanel implements LayoutManager
     private GraphicsShape graphic;
     private int indexPixel;
     
-    private view.shapes.Shape currentShape;
+    private view.shapes.ShapeView currentShape;
     
     public Plane () {
         setLayout(this);
@@ -31,12 +31,12 @@ public class Plane extends JPanel implements LayoutManager
         setBackground(new Color(250, 250, 250));
     }
     
-    public void setCurrentShape (view.shapes.Shape s) {
+    public void setCurrentShape (view.shapes.ShapeView s) {
         if (currentShape != null) currentShape.unselect(); 
         currentShape = s;
     }
     
-    public view.shapes.Shape getCurrentShape () {
+    public view.shapes.ShapeView getCurrentShape () {
         return currentShape;
     }
     
@@ -180,15 +180,11 @@ public class Plane extends JPanel implements LayoutManager
     @Override
     public void removeLayoutComponent(Component comp) {
         Container parent = comp.getParent();
-        if (comp instanceof view.shapes.Shape) {
-            view.shapes.Shape cS = (view.shapes.Shape)comp;
-            cS.getPixelsBorder().forEach((pixel)->{
+        if (comp instanceof view.shapes.ShapeView) {
+            view.shapes.ShapeView cS = (view.shapes.ShapeView)comp;
+            cS.getPixels().forEach((pixel)->{
                 parent.remove(pixel);
             });
-            cS.getPixelsFill().forEach((pixel)->{
-                parent.remove(pixel);
-            });
-            System.out.println(parent.getComponentCount());
         }
     }
 
@@ -207,12 +203,9 @@ public class Plane extends JPanel implements LayoutManager
         int n = parent.getComponentCount();
         for (int i = 0; i < n; i++) {
             Component c = parent.getComponent(i);
-            if (c instanceof view.shapes.Shape) {
-                view.shapes.Shape cS = (view.shapes.Shape)c;
-                cS.getPixelsBorder().forEach((p)->{
-                    parent.add(p);
-                });
-                cS.getPixelsFill().forEach((p)->{
+            if (c instanceof view.shapes.ShapeView) {
+                view.shapes.ShapeView cS = (view.shapes.ShapeView)c;
+                cS.getPixels().forEach((p)->{
                     parent.add(p);
                 });
             }
