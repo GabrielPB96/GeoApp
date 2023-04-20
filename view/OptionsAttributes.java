@@ -1,6 +1,7 @@
 package view;
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 
 /**
@@ -24,6 +25,9 @@ public class OptionsAttributes extends JPanel{
     private JCheckBox fill;
     
     private JLabel colorLabel;
+    private JColorChooser colorChooser;
+    private JButton setColor;
+    private JPopupMenu popupColor;
     
     private JLabel grosorLabel;
     private JComboBox grosor;
@@ -96,7 +100,21 @@ public class OptionsAttributes extends JPanel{
     private void createColorPanel () {
         colorPanel = new JPanel();
         colorLabel = new JLabel("Color: ");
-        createHorizontalPanel(colorPanel, new JComponent[]{colorLabel});
+        colorChooser = new JColorChooser(Color.BLACK);
+        colorChooser.setPreviewPanel(new JPanel());
+        AbstractColorChooserPanel[] panels = colorChooser.getChooserPanels();
+        colorChooser.removeChooserPanel(panels[0]);
+        colorChooser.removeChooserPanel(panels[4]);
+        
+        popupColor = new JPopupMenu();
+        setColor = new JButton();
+        setColor.setSize(50, 30);
+        setColor.setPreferredSize(new Dimension(50, 30));
+        setColor.setMaximumSize(new Dimension(50, 30));
+        setColor.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        popupColor.add(colorChooser);
+        
+        createHorizontalPanel(colorPanel, new JComponent[]{colorLabel, setColor});
     }
     
     private void createFillPanel () {
@@ -225,5 +243,17 @@ public class OptionsAttributes extends JPanel{
     
     public JButton getRightDirecciontion () {
         return right;
+    }
+    
+    public JColorChooser getColorChooser () {
+        return colorChooser;
+    }
+    
+    public JButton getColorButton () {
+        return setColor;
+    }
+    
+    public JPopupMenu getPopupColor () {
+        return popupColor;
     }
 }
