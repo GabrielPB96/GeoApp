@@ -85,8 +85,9 @@ public class PlaneListener extends MouseAdapter {
     }
     
     private void updateUIShape () {
-        plane.add(inputShape.getShape());
-        plane.updateUI();
+        plane.addShape(inputShape.getShape());
+        app.getHeader().getShapes().addItem(inputShape.getShape().getName()+" "+plane.getShapes().size());
+        plane.repaint();
     }
     
     private void updateGraphicShape () {

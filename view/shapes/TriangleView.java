@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class TriangleView extends ShapeView{
     private Punto vertexA, vertexB, vertexC;
     public TriangleView(Punto vertexA, Punto vertexB, Punto vertexC) {
+        super("Triangle");
         this.vertexA = vertexA;
         this.vertexB = vertexB;
         this.vertexC = vertexC;

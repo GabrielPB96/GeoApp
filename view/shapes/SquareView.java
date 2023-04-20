@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class SquareView extends ShapeView{
     private Punto topLeftVertex, bottomRightVertex;
     public SquareView(Punto topLV, Punto bottomRV) {
+        super("Square");
         this.topLeftVertex = topLV;
         this.bottomRightVertex = bottomRV;
         shape = new model.shapes.Square(this.topLeftVertex, this.bottomRightVertex);

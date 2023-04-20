@@ -50,7 +50,7 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
             } else if (src.equals(colorButton)) {
                 popupColor.show(colorButton, 0, colorButton.getHeight());
             }
-            plane.add(sc);
+            plane.addShape(sc);
             plane.updateUI();
         }
     }
@@ -73,7 +73,7 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
                     sc.update();
                 }    
             }
-            plane.add(sc);
+            plane.addShape(sc);
             plane.updateUI();
         }
     }
@@ -89,7 +89,7 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
             sm.setColor(color);
             sm.update();
             sc.update();
-            plane.add(sc);
+            plane.addShape(sc);
             plane.updateUI();
         }
     }

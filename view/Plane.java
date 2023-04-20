@@ -7,28 +7,30 @@ import java.util.Stack;
 import java.awt.event.ComponentEvent;
 import model.Punto;
 
-public class Plane extends JPanel implements LayoutManager
+public class Plane extends JPanel
 {
     final int LY = Constants.LY;
     final int LX = Constants.LX;
     int GRID_SCALE = Constants.GRID_SCALE;
-    private ArrayList<Punto> points;
-    private Stack<Pixel> pixeles, pixelesOrigen;
-    private ArrayList<Pixel> pixelesGrilla;
+    private Stack<Pixel> pixelesOrigen;
     private GraphicsShape graphic;
-    private int indexPixel;
     
     private view.shapes.ShapeView currentShape;
+    private ArrayList<view.shapes.ShapeView> shapes;
     
     public Plane () {
-        setLayout(this);
-        indexPixel = 0;
-        pixeles = new Stack<Pixel>();
+        shapes = new ArrayList<view.shapes.ShapeView>();
         pixelesOrigen = new Stack<Pixel>();
-        pixelesGrilla = new ArrayList<Pixel>();
-        crearGrilla();
         setPreferredSize(new Dimension(GRID_SCALE*LX+1, GRID_SCALE*LY+1));
         setBackground(new Color(250, 250, 250));
+    }
+    
+    public void addShape (view.shapes.ShapeView s) {
+        shapes.add(s);
+    }
+    
+    public ArrayList<view.shapes.ShapeView> getShapes () {
+        return shapes;
     }
     
     public void setCurrentShape (view.shapes.ShapeView s) {
@@ -40,16 +42,17 @@ public class Plane extends JPanel implements LayoutManager
         return currentShape;
     }
     
+    public view.shapes.ShapeView getShape (int index) {
+        return shapes.get(index);
+    }
+    
     public void removeCurrentShape () {
         if (currentShape != null) {
-            remove(currentShape);
+            shapes.remove(currentShape);
         }
     }
     
     public void clearPoints () {
-        points = new ArrayList<Punto>();
-        pixeles = new Stack<Pixel>();
-        indexPixel = 0;
         repaint();
     }
     
@@ -62,9 +65,6 @@ public class Plane extends JPanel implements LayoutManager
     }
     
     public void setPoints (ArrayList<Punto> points) {
-        indexPixel = 0;
-        this.points = points;
-        pixeles.clear();
         repaint();
     }
     
@@ -79,49 +79,9 @@ public class Plane extends JPanel implements LayoutManager
         g.drawLine(0, centroY, getWidth(), centroY);
         g.drawLine(centroX, 0, centroX, getHeight());
         //pixeles.forEach((pixel) -> pixel.paintFill(g));
+        shapes.forEach((s)->s.paint(g));
         pixelesOrigen.forEach((pixel) -> pixel.paintFill(g));
         if (graphic != null) graphic.paint((Graphics2D)g);
-    }
-    
-    public void run () {
-        Thread h = new Thread() {
-            public void run () {
-                while (indexPixel < points.size()) {
-                    pushPixel();
-                    try {
-                        Thread.sleep(0);
-                    } catch (Exception e) {}
-                }
-            }  
-        };
-        h.start();
-    }
-    
-    public void pushPixel () {
-        if (indexPixel == points.size()) return; 
-        Point p = points.get(indexPixel);
-        int mX = LX / 2;
-        int mY = LY / 2;
-        Pixel pixel = new Pixel((int)p.getX()+mX, -(int)p.getY()+mY, GRID_SCALE);
-        pixeles.push(pixel);
-        indexPixel++;
-        repaint();
-    }
-    
-    public void removePixel () {
-        if (indexPixel == 0) return;
-        pixeles.pop();
-        indexPixel--;
-        repaint();
-    }
-    
-    public void crearGrilla () {
-        for (int i = 0; i < LX; i++) {
-            for (int j = 0; j < LY; j++) {
-                Pixel p = new Pixel(i, j, GRID_SCALE);
-                pixelesGrilla.add(p);
-            }
-        }
     }
     
     public void paintGrilla(Graphics g) {
@@ -163,53 +123,6 @@ public class Plane extends JPanel implements LayoutManager
     
     public int sizePixelesOrigen () {
         return pixelesOrigen.size();
-    }
-    
-    public void showPoints() {
-        points.forEach((p) -> {
-            System.out.println("("+(int)p.getX()+", "+(int)p.getY()+") ");
-        });
-    }
-
-    @Override
-    public void addLayoutComponent(String name, Component comp) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addLayoutComponent'");
-    }
-
-    @Override
-    public void removeLayoutComponent(Component comp) {
-        Container parent = comp.getParent();
-        if (comp instanceof view.shapes.ShapeView) {
-            view.shapes.ShapeView cS = (view.shapes.ShapeView)comp;
-            cS.getPixels().forEach((pixel)->{
-                parent.remove(pixel);
-            });
-        }
-    }
-
-    @Override
-    public Dimension preferredLayoutSize(Container parent) {
-        return null;
-    }
-
-    @Override
-    public Dimension minimumLayoutSize(Container parent) {
-        return null;
-    }
-
-    @Override
-    public void layoutContainer(Container parent) {
-        int n = parent.getComponentCount();
-        for (int i = 0; i < n; i++) {
-            Component c = parent.getComponent(i);
-            if (c instanceof view.shapes.ShapeView) {
-                view.shapes.ShapeView cS = (view.shapes.ShapeView)c;
-                cS.getPixels().forEach((p)->{
-                    parent.add(p);
-                });
-            }
-        }
     }
 }
 

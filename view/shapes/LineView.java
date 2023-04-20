@@ -8,6 +8,7 @@ import model.algorithms.LineBresenham;
 
 public class LineView extends ShapeView {
   public LineView(Punto start, Punto end) {
+    super("Line");
     shape = new model.shapes.Line(start, end);
     generatePixels();
   }

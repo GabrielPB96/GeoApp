@@ -13,14 +13,18 @@ public class Header extends JPanel{
     private Title title;
     private OptionsAlgorithm oA;
     private JPanel containerO;
+    private JComboBox shapes;
+    
     public Header (String textTitle,model.Shape shape) {
         setLayout(new GridLayout(2, 1));
         containerO = new JPanel(new GridLayout(1, 2));
+        shapes = new JComboBox();
         //revisar
         String[] s = {"Line", "Circle", "Square", "Triangle"};
         
         oA = new OptionsAlgorithm(s, optionsNameAlgorithms(shape.getAlgorithms()));        
         containerO.add(oA);
+        containerO.add(shapes);
         
         title = new Title(textTitle);
         
@@ -28,12 +32,6 @@ public class Header extends JPanel{
         add(containerO);
         
         setPreferredSize(new Dimension(0, 66));
-    }
-    
-    public void setShape (model.Shape s) {
-        /*containerO.remove(1);
-        input = getInput(s);
-        containerO.add(input);*/
     }
     
     //TODO: revisar :|
@@ -63,4 +61,8 @@ public class Header extends JPanel{
     public void setTitleAlgorithm (String text) {
         title.setTitle(text);
     } 
+    
+    public JComboBox getShapes () {
+        return shapes;
+    }
 }

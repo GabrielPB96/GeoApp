@@ -11,12 +11,18 @@ import view.Constants;
 import view.Pixel;
 
 
-public abstract class ShapeView extends JComponent {
+public abstract class ShapeView {
     protected ArrayList<Pixel> pixels;
     protected model.shapes.Shape shape;
+    protected String name;
 
-    public ShapeView() {
+    public ShapeView(String name) {
+        this.name = name;
         pixels = new ArrayList<Pixel>();
+    }
+    
+    public String getName () {
+        return name;
     }
     
     public ArrayList<Pixel> getPixels() {
@@ -39,7 +45,6 @@ public abstract class ShapeView extends JComponent {
             int mX = Constants.LX / 2;
             int mY = Constants.LY / 2;
             Pixel pixel = new Pixel(x+mX, -y+mY, Constants.GRID_SCALE, shape.getColor());
-            pixel.setParentShape(ShapeView.this);
             pixels.add(pixel);
         });
     }
@@ -50,5 +55,9 @@ public abstract class ShapeView extends JComponent {
     
     public void unselect () {
         pixels.forEach((pixel)->pixel.unselect());
+    }
+    
+    public void paint (Graphics g) {
+        pixels.forEach((pixel)->{pixel.paint(g);});
     }
 }

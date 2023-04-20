@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Cursor;
 
-public class Pixel extends JComponent implements MouseListener{
+public class Pixel {
     private int width;
     private int x, y;
     private Color color;
@@ -19,13 +19,18 @@ public class Pixel extends JComponent implements MouseListener{
         this.color = color;
         isSelected = false;
         parentShape = null;
-        setBounds(x*width, y*width, width, width);
-        addMouseListener(this);
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
     
     public Pixel(int x, int y, int width){
         this(x, y, width, Color.BLACK);
+    }
+    
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
     }
     
     public void setParentShape (view.shapes.ShapeView pS) {
@@ -55,42 +60,25 @@ public class Pixel extends JComponent implements MouseListener{
     
     public void select () {
         isSelected = true;
-        repaint();
     }
     
     public void unselect () {
         isSelected = false;
-        repaint();
     }
     
-    @Override
     public void paint(Graphics g) {
-        super.paint(g);
         if(isSelected) g.setColor(new Color(42, 42, 42));
         else g.setColor(color);
-        g.fillRect(0, 0, width, width);
+        g.fillRect(x*width, y*width, width, width);
     }
     
     @Override
-    public String toString() {
-        return "("+x+", "+y+")";
-    }
-    
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if(parentShape != null) {
-            parentShape.select();
-            Plane p = (Plane)getParent();
-            p.setCurrentShape(parentShape);
+    public boolean equals (Object o) {
+        if(this == o) return true;
+        if(o instanceof Pixel) {
+            Pixel otro = (Pixel)o;
+            return otro.getX() == x && otro.getY() == y;
         }
+        return false;
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {}
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    @Override
-    public void mouseExited(MouseEvent e) {}
 }

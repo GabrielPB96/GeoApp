@@ -38,6 +38,9 @@ public abstract class Shape {
         grosor = t;
     }
     
+    public boolean getFill () {
+        return rellenado;
+    }
     public Color getColor () {
         return color;
     }
