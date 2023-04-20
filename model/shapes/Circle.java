@@ -41,4 +41,6 @@ public class Circle extends Shape
         System.out.println(((int)center.getX()+", "+(int)center.getY()));
         cuatro_vecinos((int)center.getX(), (int)center.getY());
     }
+    
+    public void calcularGrosor () {}
 }

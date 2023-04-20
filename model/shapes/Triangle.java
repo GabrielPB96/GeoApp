@@ -50,4 +50,6 @@ public class Triangle extends Shape {
         System.out.println(x+", "+y);
         cuatro_vecinos(x, y);
     }
+    
+    public void calcularGrosor () {}
 }

@@ -33,4 +33,6 @@ public class Line extends Shape {
     }
   
     public void fill () {}
+    
+    public void calcularGrosor () {}
 }
