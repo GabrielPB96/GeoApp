@@ -20,4 +20,14 @@ public class Punto extends Point{
     public void traslate (int dx, int dy) {
         
     }
+    
+    @Override
+    public boolean equals (Object o) {
+        if(this == o) return true;
+        if(o instanceof Punto) {
+            Punto otro = (Punto)o;
+            return otro.getX() == x && otro.getY() == y;
+        }
+        return false;
+    }
 }
