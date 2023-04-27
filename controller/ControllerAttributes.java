@@ -10,6 +10,7 @@ import javax.swing.*;
  * @version (a version number or a date)
  */
 public class ControllerAttributes implements ActionListener, ItemListener { 
+    private JButton up, down, left, right;
     private view.Plane plane;
     private view.OptionsAttributes opsAttrib;
     private JCheckBox fill;
@@ -19,6 +20,15 @@ public class ControllerAttributes implements ActionListener, ItemListener {
         opsAttrib = ops;
         fill = ops.getFillCheck();
         escalar = ops.getEscala();
+        
+        up = ops.getUpDirecciontion();
+        down = ops.getDownDirecciontion();
+        left = ops.getLelftDirecciontion();
+        right = ops.getRightDirecciontion();
+        up.addActionListener(this);
+        down.addActionListener(this);
+        right.addActionListener(this);
+        left.addActionListener(this);
         
         escalar.addActionListener(this);
         fill.addItemListener(this);
@@ -37,6 +47,17 @@ public class ControllerAttributes implements ActionListener, ItemListener {
                 sm.update();
                 sc.update();
             }
+            else if(src.equals(up)) {
+                sm.trasladar(0, 1);
+            }else if(src.equals(down)) {
+                sm.trasladar(0,-1);
+            }else if(src.equals(left)) {
+                sm.trasladar(-1, 0);
+            }else if(src.equals(right)) {
+                sm.trasladar(1, 0);
+            }
+            sm.update();
+            sc.update();
             plane.add(sc);
             plane.updateUI();
         }

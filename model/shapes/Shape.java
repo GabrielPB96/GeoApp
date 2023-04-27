@@ -49,8 +49,9 @@ public abstract class Shape {
     }
 
     public void trasladar (int dx, int dy) {
-        //modificar lista de vertices
-        //primero implementar en la clase Punto
+        for (Punto punto : vertexs) {
+            punto.traslate(dx, dy);
+        }
     }
     
     public void rotar (double grados) {

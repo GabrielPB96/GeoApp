@@ -17,6 +17,7 @@ public class Circle extends Shape
         this.center = center;
         this.radio = radio;
         this.algorithm = algorithm;
+        vertexs.add(this.center);
         points= algorithm.generatePoints((int) center.getX(), (int) center.getY(), radio);
     }
     
