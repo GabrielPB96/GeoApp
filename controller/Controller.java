@@ -3,12 +3,6 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 
-/**
- * Write a description of class Controller here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Controller {
     private view.App app;
     private view.Header header;

@@ -2,7 +2,6 @@ package controller;
 import java.awt.event.*;
 import javax.swing.JButton;
 
-
 /**
  * Write a description of class ButtonListener here.
  * 

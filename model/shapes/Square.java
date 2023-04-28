@@ -47,4 +47,6 @@ public class Square extends Shape {
         int y = (int)center.getY();
         cuatro_vecinos(x, y);
     }
+    
+    public void calcularGrosor () {}
 }

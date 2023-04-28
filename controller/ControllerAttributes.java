@@ -7,11 +7,11 @@ import java.awt.*;
 
 /**
  * Write a description of class ControllerAttributes here.
- *
  * @author (your name)
  * @version (a version number or a date)
  */
 public class ControllerAttributes implements ActionListener, ItemListener, ChangeListener { 
+    private JButton up, down, left, right;
     private view.Plane plane;
     private view.OptionsAttributes opsAttrib;
     private JCheckBox fill;
@@ -29,6 +29,15 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
         colorChooser = ops.getColorChooser();
         popupColor = ops.getPopupColor();
         
+        up = ops.getUpDirecciontion();
+        down = ops.getDownDirecciontion();
+        left = ops.getLelftDirecciontion();
+        right = ops.getRightDirecciontion();
+        up.addActionListener(this);
+        down.addActionListener(this);
+        right.addActionListener(this);
+        left.addActionListener(this);
+        
         escalar.addActionListener(this);
         fill.addItemListener(this);
         colorButton.addActionListener(this);
@@ -45,11 +54,20 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
             if(src.equals(escalar)) {
                 double s = (double)(escalar.getSelectedItem());
                 sm.escalar(s);
-                sm.update();
-                sc.update();
             } else if (src.equals(colorButton)) {
                 popupColor.show(colorButton, 0, colorButton.getHeight());
             }
+            else if(src.equals(up)) {
+                sm.trasladar(0, 1);
+            }else if(src.equals(down)) {
+                sm.trasladar(0,-1);
+            }else if(src.equals(left)) {
+                sm.trasladar(-1, 0);
+            }else if(src.equals(right)) {
+                sm.trasladar(1, 0);
+            }
+            sm.update();
+            sc.update();
             plane.addShape(sc);
             plane.updateUI();
         }

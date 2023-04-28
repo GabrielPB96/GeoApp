@@ -58,15 +58,23 @@ public abstract class Shape {
         }
     }
     
+    public void rotar (double grados) {
+        //modificar lista de vertices
+        //primero implementar en la clase Punto
+    }
+    
+    /*
+           Actualizar la lista points
+       */
+    public abstract void calcularGrosor ();
+    
+    public void calcularTipoTrazado () {
+        //Actualizar la lista points
+    }
+    
     public void escalar (double s) {
         factorEscalacion = s;
     }
-    
-    public void rotar (double grados) {}
-    
-    public void calcularGrosor () {}
-    
-    public void calcularTipoTrazado () {}
     
     public abstract void recalcular ();
     public abstract void fill ();

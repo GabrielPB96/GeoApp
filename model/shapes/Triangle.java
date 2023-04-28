@@ -15,6 +15,9 @@ public class Triangle extends Shape {
         this.vertexB = vertexB;
         this.vertexC = vertexC;
         this.algorithm = algorithm;
+        vertexs.add(this.vertexA);
+        vertexs.add(this.vertexB);
+        vertexs.add(this.vertexC);
         points = algorithm.generatePoints((int) vertexA.getX(), (int) vertexA.getY(), (int) vertexB.getX(),
         (int) vertexB.getY(), (int) vertexC.getX(),
         (int) vertexC.getY());
@@ -50,4 +53,6 @@ public class Triangle extends Shape {
         System.out.println(x+", "+y);
         cuatro_vecinos(x, y);
     }
+    
+    public void calcularGrosor () {}
 }
