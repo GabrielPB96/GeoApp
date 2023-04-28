@@ -10,7 +10,7 @@ import java.awt.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class ControllerAttributes implements ActionListener, ItemListener, ChangeListener { 
+public class ControllerAttributes extends KeyAdapter implements ActionListener, ItemListener, ChangeListener { 
     private JButton up, down, left, right;
     private view.Plane plane;
     private view.OptionsAttributes opsAttrib;
@@ -19,6 +19,9 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
     private JButton colorButton;
     private JColorChooser colorChooser;
     private JPopupMenu popupColor;
+    
+    private view.shapes.ShapeView viewShape;
+    private model.shapes.Shape modelShape;
     
     public ControllerAttributes (view.Plane plane, view.OptionsAttributes ops) {
         this.plane = plane;
@@ -42,58 +45,56 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
         fill.addItemListener(this);
         colorButton.addActionListener(this);
         colorChooser.getSelectionModel().addChangeListener(this);
+        
+        this.plane.addKeyListener(this);
+    }
+    
+    private void updateCurrenetShape () {
+        viewShape = plane.getCurrentShape();
+        modelShape = viewShape.getShape();
+    }
+    
+    private void updateUIPlane () {
+        modelShape.update();
+        viewShape.update();
+        plane.addShape(viewShape);
+        plane.updateUI();
     }
     
     @Override
     public void actionPerformed (ActionEvent e) {
         Object src = e.getSource();
         if (plane.getCurrentShape() != null) {
-            view.shapes.ShapeView sc = plane.getCurrentShape();
-            model.shapes.Shape sm = sc.getShape();
+            updateCurrenetShape();
             plane.removeCurrentShape();
             if(src.equals(escalar)) {
                 double s = (double)(escalar.getSelectedItem());
-                sm.escalar(s);
+                modelShape.escalar(s);
             } else if (src.equals(colorButton)) {
                 popupColor.show(colorButton, 0, colorButton.getHeight());
             }
-            else if(src.equals(up)) {
-                sm.trasladar(0, 1);
-            }else if(src.equals(down)) {
-                sm.trasladar(0,-1);
-            }else if(src.equals(left)) {
-                sm.trasladar(-1, 0);
-            }else if(src.equals(right)) {
-                sm.trasladar(1, 0);
-            }
-            sm.update();
-            sc.update();
-            plane.addShape(sc);
-            plane.updateUI();
+            eventMoved(src);
+            updateUIPlane();
         }
+        plane.requestFocus();
     }
     
     @Override
     public void itemStateChanged (ItemEvent itemEvent) {
         Object src = itemEvent.getSource();
         if (plane.getCurrentShape() != null) {
-            view.shapes.ShapeView sc = plane.getCurrentShape();
-            model.shapes.Shape sm = sc.getShape();
+            updateCurrenetShape();
             plane.removeCurrentShape();
             if (src.equals(fill)) {
                 if(itemEvent.getStateChange() == 1) {
-                    sm.setFill(true);
-                    sm.update();
-                    sc.update();
+                    modelShape.setFill(true);
                 }else {
-                    sm.setFill(false);
-                    sm.update();
-                    sc.update();
+                    modelShape.setFill(false);
                 }    
             }
-            plane.addShape(sc);
-            plane.updateUI();
+            updateUIPlane();
         }
+        plane.requestFocus();
     }
     
     @Override
@@ -101,14 +102,42 @@ public class ControllerAttributes implements ActionListener, ItemListener, Chang
         Color color = colorChooser.getColor();
         colorButton.setBackground(color);
         if(plane.getCurrentShape() != null) {
-            view.shapes.ShapeView sc = plane.getCurrentShape();
-            model.shapes.Shape sm = sc.getShape();
+            updateCurrenetShape();
             plane.removeCurrentShape();
-            sm.setColor(color);
-            sm.update();
-            sc.update();
-            plane.addShape(sc);
-            plane.updateUI();
+            modelShape.setColor(color);
+            updateUIPlane();
+        }
+        plane.requestFocus();
+    }
+    
+    private void eventMoved (Object src) {
+        if(src.equals(up)) {
+            modelShape.trasladar(0, 1);
+        }else if(src.equals(down)) {
+            modelShape.trasladar(0,-1);
+        }else if(src.equals(left)) {
+            modelShape.trasladar(-1, 0);
+        }else if(src.equals(right)) {
+            modelShape.trasladar(1, 0);
+        }        
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if(plane.getCurrentShape() != null) {
+            updateCurrenetShape();
+            plane.removeCurrentShape();
+            if(keyCode == KeyEvent.VK_UP) {
+                modelShape.trasladar(0, 1);
+            }else if(keyCode == KeyEvent.VK_DOWN){
+                modelShape.trasladar(0,-1);
+            }else if(keyCode == KeyEvent.VK_LEFT){
+                modelShape.trasladar(-1, 0);
+            }else if(keyCode == KeyEvent.VK_RIGHT){
+                modelShape.trasladar(1, 0);
+            }
+            updateUIPlane();
         }
     }
 }
