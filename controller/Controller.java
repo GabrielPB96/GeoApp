@@ -23,8 +23,6 @@ public class Controller {
         plane = this.app.getPlane();
         ctrAttributes = new ControllerAttributes(plane, this.app.getOpsAttributes());
         shapeCurrentL = new ShapeCurrentListener(plane,header.getShapes(), this.app.getOpsAttributes());
-        //ArrayList<JTextField> inputs = header.getInput().getInputs();
-        //inputL = new InputListener(inputs, this.app);
         buttonsL = new ButtonListener(this.app);
         planeL = new PlaneListener(this.app, plane);
         optionShapeL = new OptionShape(header.getOpAlgorithm().getOptionsShape(), new model.ShapeMap()){
@@ -45,11 +43,7 @@ public class Controller {
     
     public void updateShape (model.Shape shape) {
         app.setShape(shape);
-        //app.setTitle(app.getModelShape().getTitle());
         header.getOpAlgorithm().setOptionsAlgorithms(header.optionsNameAlgorithms(app.getModelShape().getAlgorithms()));
-        //header.setShape(app.getModelShape());
-        //ArrayList<JTextField> inputs = header.getInput().getInputs();
-        //inputL.setInputs(inputs);
         optionAlgorithmL.setAlgorithmMap(new model.AlgorithmMap(app.getModelShape()));
         plane.setGraphic(null);
         plane.clearPoints();
@@ -57,10 +51,7 @@ public class Controller {
     
     public void updateAlgorithm (model.algorithms.Algorithm alg) {
         app.setAlgorithm(alg);
-        //header.setTitleAlgorithm(app.getAlgorithm().getTitle());
         plane.clearPoints();
-        //TODO: volver a revisar
-        //if (!inputL.emptyInputs()) app.runAlgorithm();
         app.runAlgorithm();
     }
 }

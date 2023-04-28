@@ -34,17 +34,6 @@ public class Header extends JPanel{
         setPreferredSize(new Dimension(0, 66));
     }
     
-    //TODO: revisar :|
-    private Input getInput (model.Shape s) {
-        Input inp;
-        if (s instanceof model.LineShape) {
-            inp = new LineInput();
-        }else {
-            inp = new CircleInput();
-        }
-        return inp;
-    }
-    
     public String[] optionsNameAlgorithms (ArrayList<? extends model.algorithms.Algorithm> list) {
         String[] o = new String[list.size()];
         for (int i=0; i < list.size(); i++) {
