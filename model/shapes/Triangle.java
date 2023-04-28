@@ -55,4 +55,9 @@ public class Triangle extends Shape {
     }
     
     public void calcularGrosor () {}
+    
+    @Override
+    public String toString () {
+        return "VertexA = " + vertexA + "    VertexB = " + vertexB + "    VertexC = " + vertexC;
+    }
 }

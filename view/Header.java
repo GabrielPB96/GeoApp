@@ -15,15 +15,20 @@ public class Header extends JPanel{
     private JPanel containerO;
     private JComboBox shapes;
     
+    private ShowShape showShape;
+    
     public Header (String textTitle,model.Shape shape) {
         setLayout(new GridLayout(2, 1));
         containerO = new JPanel(new GridLayout(1, 2));
         shapes = new JComboBox();
+        
+        showShape = new ShowShape();
         //revisar
         String[] s = {"Line", "Circle", "Square", "Triangle"};
         
         oA = new OptionsAlgorithm(s, optionsNameAlgorithms(shape.getAlgorithms()));        
         containerO.add(oA);
+        containerO.add(showShape);
         containerO.add(shapes);
         
         title = new Title(textTitle);
@@ -53,5 +58,9 @@ public class Header extends JPanel{
     
     public JComboBox getShapes () {
         return shapes;
+    }
+    
+    public ShowShape getShowShape () {
+        return showShape;
     }
 }

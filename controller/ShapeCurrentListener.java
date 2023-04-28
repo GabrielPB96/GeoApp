@@ -13,11 +13,13 @@ public class ShapeCurrentListener implements ActionListener {
     private view.Plane plane;
     private JComboBox shapes;
     private view.OptionsAttributes opsAttrib;
+    private view.ShowShape showShape;
     
-    public ShapeCurrentListener (view.Plane plane, JComboBox shapes,  view.OptionsAttributes opsAttrib) {
+    public ShapeCurrentListener (view.Plane plane, JComboBox shapes,  view.OptionsAttributes opsAttrib, view.ShowShape showShape) {
         this.plane = plane;
         this.shapes = shapes;
         this.opsAttrib = opsAttrib;
+        this.showShape = showShape;
         shapes.addActionListener(this);
     }
     
@@ -26,6 +28,8 @@ public class ShapeCurrentListener implements ActionListener {
         if(src.equals(shapes)) {
             int index = shapes.getSelectedIndex();
             view.shapes.ShapeView sc = plane.getShape(index);
+            showShape.setShape(sc.getShape());
+            showShape.updateShape();
             plane.setCurrentShape(sc);
             updateAttributes(sc.getShape());
         }

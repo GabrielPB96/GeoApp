@@ -39,9 +39,13 @@ public class Circle extends Shape
     }
     
     public void fill () {
-        System.out.println(((int)center.getX()+", "+(int)center.getY()));
         cuatro_vecinos((int)center.getX(), (int)center.getY());
     }
     
     public void calcularGrosor () {}
+    
+    @Override
+    public String toString () {
+        return "Center = " + center.toString() +"    Radio = " + radio;
+    }
 }

@@ -26,6 +26,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     public ControllerAttributes (view.Plane plane, view.OptionsAttributes ops) {
         this.plane = plane;
         opsAttrib = ops;
+        
         fill = ops.getFillCheck();
         escalar = ops.getEscala();
         colorButton = ops.getColorButton();

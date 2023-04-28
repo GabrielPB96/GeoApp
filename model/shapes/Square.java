@@ -49,4 +49,9 @@ public class Square extends Shape {
     }
     
     public void calcularGrosor () {}
+    
+    @Override
+    public String toString () {
+        return "TopLeftVertex = " + topLeftVertex.toString() + "    BottomRightVertex = " + bottomRightVertex.toString();
+    }
 }

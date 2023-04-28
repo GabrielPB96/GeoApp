@@ -22,7 +22,7 @@ public class Controller {
         header = this.app.getHeader();
         plane = this.app.getPlane();
         ctrAttributes = new ControllerAttributes(plane, this.app.getOpsAttributes());
-        shapeCurrentL = new ShapeCurrentListener(plane,header.getShapes(), this.app.getOpsAttributes());
+        shapeCurrentL = new ShapeCurrentListener(plane,header.getShapes(), this.app.getOpsAttributes(), header.getShowShape());
         buttonsL = new ButtonListener(this.app);
         planeL = new PlaneListener(this.app, plane);
         optionShapeL = new OptionShape(header.getOpAlgorithm().getOptionsShape(), new model.ShapeMap()){
