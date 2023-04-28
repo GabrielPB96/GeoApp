@@ -52,7 +52,11 @@ public abstract class Shape {
         return vertexs;
     }
 
-    public void trasladar (int dx, int dy) {}
+    public void trasladar (int dx, int dy) {
+        for (Punto punto : vertexs) {
+            punto.traslate(dx, dy);
+        }
+    }
     
     public void escalar (double s) {
         factorEscalacion = s;

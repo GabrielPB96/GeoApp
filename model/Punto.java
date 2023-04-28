@@ -18,7 +18,9 @@ public class Punto extends Point{
     }
     
     public void traslate (int dx, int dy) {
-        
+        int newX = this.x + dx;
+        int newY = this.y + dy;
+        this.setLocation(newX, newY);
     }
     
     @Override
