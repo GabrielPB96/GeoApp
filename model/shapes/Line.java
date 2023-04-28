@@ -15,6 +15,8 @@ public class Line extends Shape {
         this.start = start;
         this.end = end;
         this.algorithm = algorithm;
+        this.vertexs.add(this.start);
+        this.vertexs.add(this.end);
         points = algorithm.generatePoints((int) start.getX(), (int) start.getY(), (int) end.getX(),
             (int) end.getY());
     }
@@ -35,4 +37,9 @@ public class Line extends Shape {
     public void fill () {}
     
     public void calcularGrosor () {}
+    
+    @Override
+    public String toString () {
+        return "Start = " + start + "    End = " + end;
+    }
 }
