@@ -50,7 +50,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         this.plane.addKeyListener(this);
     }
     
-    private void updateCurrenetShape () {
+    private void updateCurrentShape () {
         viewShape = plane.getCurrentShape();
         modelShape = viewShape.getShape();
     }
@@ -66,7 +66,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     public void actionPerformed (ActionEvent e) {
         Object src = e.getSource();
         if (plane.getCurrentShape() != null) {
-            updateCurrenetShape();
+            updateCurrentShape();
             plane.removeCurrentShape();
             if(src.equals(escalar)) {
                 double s = (double)(escalar.getSelectedItem());
@@ -84,7 +84,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     public void itemStateChanged (ItemEvent itemEvent) {
         Object src = itemEvent.getSource();
         if (plane.getCurrentShape() != null) {
-            updateCurrenetShape();
+            updateCurrentShape();
             plane.removeCurrentShape();
             if (src.equals(fill)) {
                 if(itemEvent.getStateChange() == 1) {
@@ -103,7 +103,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         Color color = colorChooser.getColor();
         colorButton.setBackground(color);
         if(plane.getCurrentShape() != null) {
-            updateCurrenetShape();
+            updateCurrentShape();
             plane.removeCurrentShape();
             modelShape.setColor(color);
             updateUIPlane();
@@ -127,7 +127,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if(plane.getCurrentShape() != null) {
-            updateCurrenetShape();
+            updateCurrentShape();
             plane.removeCurrentShape();
             if(keyCode == KeyEvent.VK_UP) {
                 modelShape.trasladar(0, 1);

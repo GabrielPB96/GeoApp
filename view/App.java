@@ -26,6 +26,7 @@ public class App extends JFrame {
     public App () {
         super("GeoApp");
         setLayout(new BorderLayout(10,10));
+        getContentPane().setBackground(Color.WHITE);
         
         shape = new model.LineShape();
         algorithm = shape.getAlgorithms().get(0);

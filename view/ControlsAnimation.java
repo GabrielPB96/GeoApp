@@ -13,9 +13,15 @@ public class ControlsAnimation extends JPanel {
     private JButton clear, delete;
     public ControlsAnimation () {
         setPreferredSize(new Dimension(0, 40));
-        
+        setBackground(Color.WHITE);
         delete = new JButton("Delete Current Shape");
         clear = new JButton("Clear");
+        
+        delete.setBackground(new Color(6, 74, 203));
+        clear.setBackground(new Color(6, 74, 203));
+        
+        delete.setForeground(Color.WHITE);
+        clear.setForeground(Color.WHITE);
 
         add(delete);
         add(clear);

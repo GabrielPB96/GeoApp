@@ -19,7 +19,10 @@ public class Header extends JPanel{
     
     public Header (String textTitle,model.Shape shape) {
         setLayout(new GridLayout(2, 1));
+        setBackground(Color.WHITE);
         containerO = new JPanel(new GridLayout(1, 2));
+        containerO.setBackground(Color.WHITE);
+        
         shapes = new JComboBox();
         
         showShape = new ShowShape();

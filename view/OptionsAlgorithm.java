@@ -2,6 +2,7 @@ package view;
 import javax.swing.*;
 import javax.swing.JComboBox;
 import java.awt.FlowLayout;
+import java.awt.Color;
 
 
 /**
@@ -15,6 +16,7 @@ public class OptionsAlgorithm extends JPanel {
     
     public OptionsAlgorithm (String[] shapes, String[] algorithms) {
         setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+        setBackground(Color.WHITE);
         optionsShape = new JComboBox();
         optionsAlgorithm = new JComboBox();
         

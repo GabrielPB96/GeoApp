@@ -1,5 +1,6 @@
 package view;
 import javax.swing.*;
+import java.awt.Color;
 
 
 /**
@@ -10,6 +11,10 @@ import javax.swing.*;
  */
 public class ShowShape extends JPanel {
     private model.shapes.Shape shape;
+    
+    public ShowShape () {
+        setBackground(Color.WHITE);
+    }
     
     public void setShape (model.shapes.Shape shape) {
         this.shape = shape;

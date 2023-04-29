@@ -12,5 +12,6 @@ import java.awt.*;
 public class Border extends JPanel {
     public Border () {
         setPreferredSize(new Dimension(40, 0));
+        setBackground(Color.WHITE);
     }
 }
