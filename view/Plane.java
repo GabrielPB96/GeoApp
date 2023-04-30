@@ -18,9 +18,12 @@ public class Plane extends JPanel
     private view.shapes.ShapeView currentShape;
     private ArrayList<view.shapes.ShapeView> shapes;
     
+    private int currentShapeIndex;
+    
     public Plane () {
         shapes = new ArrayList<view.shapes.ShapeView>();
         pixelesOrigen = new Stack<Pixel>();
+        currentShapeIndex = 0;
         setPreferredSize(new Dimension(GRID_SCALE*LX+1, GRID_SCALE*LY+1));
         setBackground(new Color(250, 250, 250));
     }
@@ -29,8 +32,16 @@ public class Plane extends JPanel
         shapes.add(s);
     }
     
+    public void addShape (view.shapes.ShapeView s, int index) {
+        shapes.add(index, s);
+    }
+    
     public ArrayList<view.shapes.ShapeView> getShapes () {
         return shapes;
+    }
+    
+    public void removeAllShapes () {
+        shapes.clear();
     }
     
     public void setCurrentShape (view.shapes.ShapeView s) {
@@ -43,7 +54,12 @@ public class Plane extends JPanel
     }
     
     public view.shapes.ShapeView getShape (int index) {
+        currentShapeIndex = index;
         return shapes.get(index);
+    }
+    
+    public int getCurrentShapeIndex(){
+        return currentShapeIndex;
     }
     
     public void removeCurrentShape () {

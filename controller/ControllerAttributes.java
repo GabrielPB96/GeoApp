@@ -58,7 +58,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     private void updateUIPlane () {
         modelShape.update();
         viewShape.update();
-        plane.addShape(viewShape);
+        plane.addShape(viewShape, plane.getCurrentShapeIndex());
         plane.updateUI();
     }
     

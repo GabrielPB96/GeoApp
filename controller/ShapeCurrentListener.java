@@ -27,7 +27,6 @@ public class ShapeCurrentListener implements ActionListener {
         Object src = e.getSource();
         if(src.equals(shapes)) {
             int index = shapes.getSelectedIndex();
-            System.out.println(index);
             view.shapes.ShapeView sc = plane.getShape(index);
             showShape.setShape(sc.getShape());
             showShape.updateShape();
