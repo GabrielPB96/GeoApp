@@ -74,9 +74,10 @@ public class PlaneListener extends MouseAdapter {
             inputShape.setInputs();
             updateGraphicShape();
             updateUIShape();
+            
             plane.clearPixelesOrigen();
             inputShape.clearInputs();
-            app.runAlgorithm();
+            
             plane.repaint();
             inputShape = null;
             plane.setGraphic(null);
@@ -86,6 +87,7 @@ public class PlaneListener extends MouseAdapter {
     
     private void updateUIShape () {
         plane.addShape(inputShape.getShape());
+        //agrega la figura graficada al combobox
         app.getHeader().getShapes().addItem(inputShape.getShape().getName()+" "+plane.getShapes().size());
         plane.repaint();
     }

@@ -10,7 +10,6 @@ public class Controller {
     
     private InputListener inputL;
     private OptionShape optionShapeL;
-    private OptionAlgorithm optionAlgorithmL;
     private ButtonListener buttonsL;
     private PlaneListener planeL;
     
@@ -25,33 +24,16 @@ public class Controller {
         shapeCurrentL = new ShapeCurrentListener(plane,header.getShapes(), this.app.getOpsAttributes(), header.getShowShape());
         buttonsL = new ButtonListener(this.app);
         planeL = new PlaneListener(this.app, plane);
-        optionShapeL = new OptionShape(header.getOpAlgorithm().getOptionsShape(), new model.ShapeMap()){
+        optionShapeL = new OptionShape(header.getOptionsShapes().getOptionsShape(), new model.ShapeMap()){
             @Override
             public void action (model.Shape shape) {
                 updateShape(shape);
-                updateAlgorithm(app.getModelShape().getAlgorithms().get(0));
-            }
-        };
-        
-        optionAlgorithmL = new OptionAlgorithm(header.getOpAlgorithm().getOptionsAlgorithm(), new model.AlgorithmMap(app.getModelShape())){
-            @Override
-            public void action (model.algorithms.Algorithm alg) {
-                updateAlgorithm(alg);
             }
         };
     }
     
     public void updateShape (model.Shape shape) {
         app.setShape(shape);
-        header.getOpAlgorithm().setOptionsAlgorithms(header.optionsNameAlgorithms(app.getModelShape().getAlgorithms()));
-        optionAlgorithmL.setAlgorithmMap(new model.AlgorithmMap(app.getModelShape()));
         plane.setGraphic(null);
-        plane.clearPoints();
-    }
-    
-    public void updateAlgorithm (model.algorithms.Algorithm alg) {
-        app.setAlgorithm(alg);
-        plane.clearPoints();
-        app.runAlgorithm();
     }
 }

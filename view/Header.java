@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Header extends JPanel{
     private Title title;
-    private OptionsAlgorithm oA;
+    private OptionsShapes oA;
     private JPanel containerO;
     private JComboBox shapes;
     
@@ -29,7 +29,7 @@ public class Header extends JPanel{
         //revisar
         String[] s = {"Line", "Circle", "Square", "Triangle"};
         
-        oA = new OptionsAlgorithm(s, optionsNameAlgorithms(shape.getAlgorithms()));        
+        oA = new OptionsShapes(s);        
         containerO.add(oA);
         containerO.add(showShape);
         containerO.add(shapes);
@@ -42,25 +42,16 @@ public class Header extends JPanel{
         setPreferredSize(new Dimension(0, 66));
     }
     
-    public String[] optionsNameAlgorithms (ArrayList<? extends model.algorithms.Algorithm> list) {
-        String[] o = new String[list.size()];
-        for (int i=0; i < list.size(); i++) {
-            String n = list.get(i).getTitle();
-            o[i] = n;
-        }
-        return o;
-    }
-    
-    public OptionsAlgorithm getOpAlgorithm () {
-        return oA;
-    }
-    
     public void setTitleAlgorithm (String text) {
         title.setTitle(text);
     } 
     
     public JComboBox getShapes () {
         return shapes;
+    }
+    
+    public OptionsShapes getOptionsShapes () {
+        return oA;
     }
     
     public ShowShape getShowShape () {

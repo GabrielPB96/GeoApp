@@ -1,7 +1,7 @@
 package model.shapes;
 import model.Punto;
 
-import model.algorithms.SquareMidPoint;
+import model.algorithms.SquareBresenham;
 import model.algorithms.SquareAlgorithm;
 
 /**
@@ -23,7 +23,7 @@ public class Square extends Shape {
     }
     
     public Square(Punto topLV, Punto bottomRV) {
-        this(topLV, bottomRV, new SquareMidPoint());
+        this(topLV, bottomRV, new SquareBresenham());
     }
     
     public Punto calculateCenterPoint () {

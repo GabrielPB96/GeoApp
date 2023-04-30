@@ -16,7 +16,6 @@ public class App extends JFrame {
     private final int LX = Constants.LX;
     
     private model.Shape shape;
-    private model.algorithms.Algorithm algorithm;
     
     private Plane plane;
     private Header header;
@@ -29,7 +28,6 @@ public class App extends JFrame {
         getContentPane().setBackground(Color.WHITE);
         
         shape = new model.LineShape();
-        algorithm = shape.getAlgorithms().get(0);
         
         header = new Header("Graficacion :)", shape);
         plane = new Plane();
@@ -52,34 +50,8 @@ public class App extends JFrame {
         setVisible(true);
     }
     
-    public void runAlgorithm () {
-        if (plane.getGraphicShape() instanceof GraphicLine) {
-            model.algorithms.LineAlgorithm a = (model.algorithms.LineAlgorithm)algorithm;
-            GraphicLine gL = (GraphicLine)plane.getGraphicShape();
-            Punto start = gL.startPoint();
-            Punto end = gL.endPoint();
-            int xI = (int)start.getX();
-            int yI = (int)start.getY();
-            int xF = (int)end.getX();
-            int yF = (int)end.getY();
-            plane.setPoints(a.generatePoints(xI, yI, xF, yF));
-        } else if (plane.getGraphicShape() instanceof GraphicCircle) {
-            model.algorithms.CircleAlgorithm a = (model.algorithms.CircleAlgorithm)algorithm;
-            GraphicCircle gC = (GraphicCircle)plane.getGraphicShape();
-            Punto center = gC.center();
-            int xC = (int)center.getX();
-            int yC = (int)center.getY();
-            int radio = gC.radio();
-            plane.setPoints(a.generatePoints(xC, yC, radio));
-        } 
-    }
-    
     public void setShape (model.Shape shape) {
         this.shape = shape;
-    }
-    
-    public void setAlgorithm (model.algorithms.Algorithm algorithm) {
-        this.algorithm = algorithm;
     }
     
     public OptionsAttributes getOpsAttributes () {
@@ -100,10 +72,6 @@ public class App extends JFrame {
     
     public ControlsAnimation getCrtAnimation () {
         return crtAnimation;
-    }
-    
-    public model.algorithms.Algorithm getAlgorithm () {
-        return algorithm;
     }
     
     public static void main(String[] args) {

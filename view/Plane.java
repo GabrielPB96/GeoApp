@@ -69,7 +69,7 @@ public class Plane extends JPanel
     }
     
     public void clearPoints () {
-        repaint();
+        //repaint();
     }
     
     public void setGraphic (GraphicsShape g) {
