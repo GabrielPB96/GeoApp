@@ -14,6 +14,7 @@ public class SquareShape extends Shape {
         super("Algorithms of the Square");
         algorithms = new ArrayList<model.algorithms.SquareAlgorithm>();
         algorithms.add(new model.algorithms.SquareMidPoint());
+        algorithms.add(new model.algorithms.SquareBresenham());
     }
     public ArrayList<? extends model.algorithms.Algorithm> getAlgorithms () {
         return algorithms;
