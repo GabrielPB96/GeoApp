@@ -86,7 +86,7 @@ public abstract class Shape {
             fill();
         }
         calcularGrosor();
-        calcularTipoTrazado ();
+        calcularTipoTrazado();
     }
     
     public void update () {

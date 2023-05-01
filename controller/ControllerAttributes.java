@@ -21,6 +21,8 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     private JColorChooser colorChooser;
     private JPopupMenu popupColor;
     
+    private JComboBox grosor;
+    
     private view.shapes.ShapeView viewShape;
     private model.shapes.Shape modelShape;
     
@@ -51,6 +53,9 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         colorButton.addActionListener(this);
         colorChooser.getSelectionModel().addChangeListener(this);
         
+        grosor = opsAttrib.getGrosor();
+        grosor.addActionListener(this);
+        
         this.plane.addKeyListener(this);
     }
     
@@ -76,6 +81,9 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
                 modelShape.escalar(s);
             } else if (src.equals(colorButton)) {
                 popupColor.show(colorButton, 0, colorButton.getHeight());
+            } else if(src.equals(grosor)) {
+                int g = (int)(grosor.getSelectedItem());
+                modelShape.setGrosor(g);
             }
             eventMoved(src);
             updateUIPlane();
