@@ -58,7 +58,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     private void updateUIPlane () {
         modelShape.update();
         viewShape.update();
-        plane.addShape(viewShape, plane.getCurrentShapeIndex());
+        //plane.addShape(viewShape, plane.getCurrentShapeIndex());
         plane.updateUI();
     }
     
@@ -67,7 +67,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         Object src = e.getSource();
         if (plane.getCurrentShape() != null) {
             updateCurrentShape();
-            plane.removeCurrentShape();
+            //plane.removeCurrentShape();
             if(src.equals(escalar)) {
                 double s = (double)(escalar.getSelectedItem());
                 modelShape.escalar(s);
@@ -85,7 +85,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         Object src = itemEvent.getSource();
         if (plane.getCurrentShape() != null) {
             updateCurrentShape();
-            plane.removeCurrentShape();
+            //plane.removeCurrentShape();
             if (src.equals(fill)) {
                 if(itemEvent.getStateChange() == 1) {
                     modelShape.setFill(true);
@@ -104,7 +104,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         colorButton.setBackground(color);
         if(plane.getCurrentShape() != null) {
             updateCurrentShape();
-            plane.removeCurrentShape();
+            //plane.removeCurrentShape();
             modelShape.setColor(color);
             updateUIPlane();
         }
@@ -128,7 +128,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         int keyCode = e.getKeyCode();
         if(plane.getCurrentShape() != null) {
             updateCurrentShape();
-            plane.removeCurrentShape();
+            //plane.removeCurrentShape();
             if(keyCode == KeyEvent.VK_UP) {
                 modelShape.trasladar(0, 1);
             }else if(keyCode == KeyEvent.VK_DOWN){
