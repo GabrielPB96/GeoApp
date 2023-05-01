@@ -7,8 +7,9 @@ import java.awt.event.*;
 import java.awt.Cursor;
 
 public class Pixel extends JComponent implements MouseListener{
-    private int width;
-    private int x, y;
+    private final int width;
+    private final int x;
+    private final int y;
     private Color color;
     private boolean isSelected;
     private view.shapes.ShapeView parentShape;

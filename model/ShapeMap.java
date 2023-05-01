@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 
 public class ShapeMap {
-    private HashMap<String, Shape> shapes;
+    private final HashMap<String, Shape> shapes;
     
     public ShapeMap () {
         shapes = new HashMap<String, Shape>();

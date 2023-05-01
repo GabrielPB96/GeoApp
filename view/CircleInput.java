@@ -11,8 +11,12 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class CircleInput extends Input {
-    private JTextField xC, yC, radio;
-    private JLabel labelXC, labelYC, labelRadio;
+    private final JTextField xC;
+    private final JTextField yC;
+    private final JTextField radio;
+    private final JLabel labelXC;
+    private final JLabel labelYC;
+    private final JLabel labelRadio;
     
     public CircleInput () {
         labelXC = new JLabel("xC");

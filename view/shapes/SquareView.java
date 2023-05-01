@@ -8,7 +8,8 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class SquareView extends ShapeView{
-    private Punto topLeftVertex, bottomRightVertex;
+    private final Punto topLeftVertex;
+    private final Punto bottomRightVertex;
     public SquareView(Punto topLV, Punto bottomRV) {
         this.topLeftVertex = topLV;
         this.bottomRightVertex = bottomRV;

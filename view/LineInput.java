@@ -13,8 +13,14 @@ import java.awt.event.ActionListener;
  * @version (a version number or a date)
  */
 public class LineInput extends Input {
-    private JTextField xI, yI, xF, yF;
-    private JLabel labelXI, labelYI, labelXF, labelYF;
+    private final JTextField xI;
+    private final JTextField yI;
+    private final JTextField xF;
+    private final JTextField yF;
+    private final JLabel labelXI;
+    private final JLabel labelYI;
+    private final JLabel labelXF;
+    private final JLabel labelYF;
     
     public LineInput () {
         labelXI = new JLabel("xI");

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class TriangleShape extends Shape {
-    private ArrayList<model.algorithms.TriangleAlgorithm> algorithms;
+    private final ArrayList<model.algorithms.TriangleAlgorithm> algorithms;
     
     public TriangleShape() {
         super("Algorithms of the Triangle");

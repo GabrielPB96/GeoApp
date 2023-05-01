@@ -7,8 +7,8 @@ import model.algorithms.CircleAlgorithm;
 import model.algorithms.CircleMidPoint;
 
 public class CircleView extends ShapeView {
-    private Punto center;
-    private int radio;
+    private final Punto center;
+    private final int radio;
     public CircleView(Punto center, int radio) {
         this.center = center;
         this.radio = radio;

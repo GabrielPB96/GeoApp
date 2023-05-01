@@ -11,8 +11,8 @@ import model.algorithms.CircleMidPoint;
  */
 public class Circle extends Shape
 {
-    private Punto center;
-    private int radio;
+    private final Punto center;
+    private final int radio;
     public Circle(Punto center, int radio, CircleAlgorithm algorithm) {
         this.center = center;
         this.radio = radio;
@@ -41,6 +41,12 @@ public class Circle extends Shape
         System.out.println(((int)center.getX()+", "+(int)center.getY()));
         cuatro_vecinos((int)center.getX(), (int)center.getY());
     }
-    
+
+
+    @Override
+    public void rotar(double grados) {
+
+    }
+
     public void calcularGrosor () {}
 }

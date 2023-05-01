@@ -10,7 +10,8 @@ import java.awt.*;
  * @version (a version number or a date)
  */
 public class ControlsAnimation extends JPanel {
-    private JButton clear, delete;
+    private final JButton clear;
+    private final JButton delete;
     public ControlsAnimation () {
         setPreferredSize(new Dimension(0, 40));
         

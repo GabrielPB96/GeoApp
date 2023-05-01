@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class OptionAlgorithm implements ItemListener {
-    private JComboBox options;
+    private final JComboBox options;
     private model.AlgorithmMap optMap;
     public OptionAlgorithm (JComboBox combo, model.AlgorithmMap optMap) {
         options = combo;

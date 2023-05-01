@@ -5,6 +5,7 @@ import java.awt.Color;
 import model.algorithms.Algorithm;
 
 public abstract class Shape {
+
     protected ArrayList<Punto> points;
     protected ArrayList<Punto> vertexs;
     protected int grosor;
@@ -20,7 +21,7 @@ public abstract class Shape {
         vertexs = new ArrayList<Punto>();
         grosor = 1;
         factorEscalacion = 1;
-        color = new Color(100, 50, 100);
+        color = new Color(150, 50, 100);//100,50,100
         tipoTrazado = TipoTrazado.CONTINUO;
         rellenado = false;
     }
@@ -47,13 +48,17 @@ public abstract class Shape {
     public ArrayList<Punto> getVertexs () {
         return vertexs;
     }
+    public void setVertexs(ArrayList<Punto> nuevo){
+        vertexs = nuevo;
+    }
 
     public void trasladar (int dx, int dy) {
         //modificar lista de vertices
         //primero implementar en la clase Punto
     }
-    
-    public void rotar (double grados) {
+
+    public void rotar (double grados) { // modificare
+
         //modificar lista de vertices
         //primero implementar en la clase Punto
     }

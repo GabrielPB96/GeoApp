@@ -11,7 +11,8 @@ import java.awt.FlowLayout;
  * @version (a version number or a date)
  */
 public class OptionsAlgorithm extends JPanel {
-    private JComboBox optionsShape, optionsAlgorithm;
+    private final JComboBox optionsShape;
+    private final JComboBox optionsAlgorithm;
     
     public OptionsAlgorithm (String[] shapes, String[] algorithms) {
         setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));

@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 public class Title extends JPanel
 {
-    private JLabel title;
+    private final JLabel title;
     public Title(String text) {
         setPreferredSize(new Dimension(0, 40));
         title = new JLabel(text);

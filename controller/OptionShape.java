@@ -10,8 +10,8 @@ import javax.swing.JComboBox;
  * @version (a version number or a date)
  */
 public class OptionShape implements ItemListener {
-    private JComboBox options;
-    private model.ShapeMap optMap;
+    private final JComboBox options;
+    private final model.ShapeMap optMap;
     public OptionShape (JComboBox combo, model.ShapeMap optMap) {
         options = combo;
         this.optMap = optMap;

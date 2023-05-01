@@ -13,7 +13,9 @@ import model.Punto;
  * @version (a version number or a date)
  */
 public class GraphicCircle extends GraphicsShape {
-    private int xC, yC, radio;
+    private final int xC;
+    private final int yC;
+    private final int radio;
     public GraphicCircle(int xc, int yc, Color color, int xC, int yC, int radio) {
         super(xc, yc, color);
         this.xC =xC;

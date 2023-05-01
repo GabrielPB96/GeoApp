@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class LineShape extends Shape
 {
-    private ArrayList<model.algorithms.LineAlgorithm> algorithms;
+    private final ArrayList<model.algorithms.LineAlgorithm> algorithms;
     public LineShape () {
         super("Algorithms of the Line");
         algorithms = new ArrayList<model.algorithms.LineAlgorithm>();

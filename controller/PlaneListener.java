@@ -11,8 +11,8 @@ import model.Punto;
  * @version (a version number or a date)
  */
 public class PlaneListener extends MouseAdapter {
-    private view.Plane plane;
-    private view.App app;
+    private final view.Plane plane;
+    private final view.App app;
     private InputShape inputShape;
     public PlaneListener (view.App app, view.Plane plane) {
         this.app = app;

@@ -9,7 +9,9 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class TriangleView extends ShapeView{
-    private Punto vertexA, vertexB, vertexC;
+    private final Punto vertexA;
+    private final Punto vertexB;
+    private final Punto vertexC;
     public TriangleView(Punto vertexA, Punto vertexB, Punto vertexC) {
         this.vertexA = vertexA;
         this.vertexB = vertexB;

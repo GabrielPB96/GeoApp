@@ -18,10 +18,10 @@ public class App extends JFrame {
     private model.Shape shape;
     private model.algorithms.Algorithm algorithm;
     
-    private Plane plane;
-    private Header header;
-    private ControlsAnimation crtAnimation;
-    private OptionsAttributes opsAttributes;
+    private final Plane plane;
+    private final Header header;
+    private final ControlsAnimation crtAnimation;
+    private final OptionsAttributes opsAttributes;
 
     public App () {
         super("GeoApp");

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class CircleShape extends Shape
 {
-    private ArrayList<model.algorithms.CircleAlgorithm> algorithms;
+    private final ArrayList<model.algorithms.CircleAlgorithm> algorithms;
     public CircleShape () {
         super("Algorithms of the Circle");
         algorithms = new ArrayList<model.algorithms.CircleAlgorithm>();

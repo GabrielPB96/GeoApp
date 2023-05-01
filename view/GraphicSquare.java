@@ -12,7 +12,10 @@ import java.awt.BasicStroke;
  * @version (a version number or a date)
  */
 public class GraphicSquare extends GraphicsShape {
-    private int xTL, yTL, width, height;
+    private final int xTL;
+    private final int yTL;
+    private final int width;
+    private final int height;
     
     public GraphicSquare(int xc, int yc, Color color, int xTL, int yTL, int width, int height) {
         super(xc, yc, color);

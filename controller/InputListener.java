@@ -14,7 +14,7 @@ import javax.swing.event.DocumentEvent;
  */
 public class InputListener implements DocumentListener {
     private ArrayList<JTextField> inputs;
-    private view.App app;
+    private final view.App app;
     public InputListener (ArrayList<JTextField> inputs, view.App app) {
         this.app = app;
         this.inputs = inputs;

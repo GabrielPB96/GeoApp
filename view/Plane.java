@@ -14,7 +14,7 @@ public class Plane extends JPanel implements LayoutManager
     int GRID_SCALE = Constants.GRID_SCALE;
     private ArrayList<Punto> points;
     private Stack<Pixel> pixeles, pixelesOrigen;
-    private ArrayList<Pixel> pixelesGrilla;
+    private final ArrayList<Pixel> pixelesGrilla;
     private GraphicsShape graphic;
     private int indexPixel;
     

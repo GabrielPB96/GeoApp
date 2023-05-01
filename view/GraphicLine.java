@@ -14,7 +14,10 @@ import model.Punto;
  * @version (a version number or a date)
  */
 public class GraphicLine extends GraphicsShape {
-    private int xI, yI, xF, yF;
+    private final int xI;
+    private final int yI;
+    private final int xF;
+    private final int yF;
     public GraphicLine(int xc, int yc, Color color, int xI, int yI, int xF, int yF) {
         super(xc, yc, color);
         this.xI = xI;

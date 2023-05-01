@@ -7,7 +7,7 @@
  */
 public class Main
 {
-    public static void main (String args[]) {
+    public static void main (String[] args) {
         view.App app = new view.App();
         controller.Controller c = new controller.Controller(app);
     }

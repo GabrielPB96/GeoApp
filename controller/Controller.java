@@ -10,17 +10,17 @@ import javax.swing.JTextField;
  * @version (a version number or a date)
  */
 public class Controller {
-    private view.App app;
-    private view.Header header;
-    private view.Plane plane;
+    private final view.App app;
+    private final view.Header header;
+    private final view.Plane plane;
     
     private InputListener inputL;
-    private OptionShape optionShapeL;
-    private OptionAlgorithm optionAlgorithmL;
-    private ButtonListener buttonsL;
-    private PlaneListener planeL;
+    private final OptionShape optionShapeL;
+    private final OptionAlgorithm optionAlgorithmL;
+    private final ButtonListener buttonsL;
+    private final PlaneListener planeL;
     
-    private ControllerAttributes ctrAttributes;
+    private final ControllerAttributes ctrAttributes;
     public Controller (view.App app) {
         this.app = app;
         

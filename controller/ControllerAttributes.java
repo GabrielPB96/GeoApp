@@ -10,16 +10,23 @@ import javax.swing.*;
  * @version (a version number or a date)
  */
 public class ControllerAttributes implements ActionListener, ItemListener { 
-    private view.Plane plane;
-    private view.OptionsAttributes opsAttrib;
-    private JCheckBox fill;
-    private JComboBox escalar;
+    private final view.Plane plane;
+    private final view.OptionsAttributes opsAttrib;
+    private final JCheckBox fill;
+    private final JComboBox escalar;
+
+    private final JTextField rotatt;
     public ControllerAttributes (view.Plane plane, view.OptionsAttributes ops) {
         this.plane = plane;
         opsAttrib = ops;
         fill = ops.getFillCheck();
         escalar = ops.getEscala();
-        
+
+        rotatt = ops.getGrados();
+
+        rotatt.addActionListener(this);
+
+
         escalar.addActionListener(this);
         fill.addItemListener(this);
     }
@@ -36,10 +43,17 @@ public class ControllerAttributes implements ActionListener, ItemListener {
                 sm.escalar(s);
                 sm.update();
                 sc.update();
+            }else if (src.equals(rotatt)){
+                double gr = Double.parseDouble(opsAttrib.getGrados().getText());
+                sm.rotar(gr);
+                sm.update();
+                sc.update();
+
             }
             plane.add(sc);
             plane.updateUI();
         }
+
     }
     
     @Override

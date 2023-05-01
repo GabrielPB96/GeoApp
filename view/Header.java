@@ -10,9 +10,9 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class Header extends JPanel{
-    private Title title;
-    private OptionsAlgorithm oA;
-    private JPanel containerO;
+    private final Title title;
+    private final OptionsAlgorithm oA;
+    private final JPanel containerO;
     public Header (String textTitle,model.Shape shape) {
         setLayout(new GridLayout(2, 1));
         containerO = new JPanel(new GridLayout(1, 2));

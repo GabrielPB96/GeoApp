@@ -9,8 +9,8 @@ import java.util.HashMap;
  * @version (a version number or a date)
  */
 public class AlgorithmMap {
-    private HashMap<String, model.algorithms.Algorithm> options;
-    private Shape shape;
+    private final HashMap<String, model.algorithms.Algorithm> options;
+    private final Shape shape;
     public AlgorithmMap (Shape shape) {
         this.shape = shape;
         options = new HashMap<String, model.algorithms.Algorithm>();

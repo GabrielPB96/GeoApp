@@ -1,6 +1,8 @@
 package view;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -27,6 +29,8 @@ public class OptionsAttributes extends JPanel{
     
     private JLabel grosorLabel;
     private JComboBox grosor;
+    //boton
+    private JButton boton;
     
     private JLabel escalaLabel;
     private JComboBox escala;
@@ -137,6 +141,7 @@ public class OptionsAttributes extends JPanel{
         rotate = new JLabel("Rotar (rad): ");
         grados = new JTextField(5);
         createHorizontalPanel(rotatePanel, new JComponent[]{rotate, grados});
+
     }
     
     private void createDirectionsPanel () {
@@ -225,5 +230,9 @@ public class OptionsAttributes extends JPanel{
     
     public JButton getRightDirecciontion () {
         return right;
+    }
+
+    public JButton getBoton() {
+        return boton;
     }
 }

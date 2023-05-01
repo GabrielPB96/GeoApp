@@ -10,8 +10,9 @@ import javax.swing.JButton;
  * @version (a version number or a date)
  */
 public class ButtonListener implements ActionListener {
-    private view.App app;
-    private JButton delete, clear;
+    private final view.App app;
+    private final JButton delete;
+    private final JButton clear;
     public ButtonListener (view.App app) {
         this.app = app;
         clear = this.app.getCrtAnimation().clear();
