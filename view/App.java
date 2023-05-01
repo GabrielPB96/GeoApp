@@ -40,8 +40,8 @@ public class App extends JFrame {
         add(new Border(), BorderLayout.EAST);
         add(opsAttributes, BorderLayout.WEST);
         
-        int w = (Constants.LX*Constants.GRID_SCALE+1) + 40+200 + 10+10 + (16);
-        int h = (Constants.LY*Constants.GRID_SCALE+1) + 66 + (10+10) + 40 + 39;
+        int w = (Constants.LX*Constants.GRID_SCALE+1) + 40+200 + 10+10 + (14);
+        int h = (Constants.LY*Constants.GRID_SCALE+1) + 66 + (10+10) + 40 + 37;
         //1267x696
         setBounds(0, 0, w, h);
         setLocationRelativeTo(null);

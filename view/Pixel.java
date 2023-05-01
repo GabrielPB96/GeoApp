@@ -25,6 +25,11 @@ public class Pixel {
         this(x, y, width, Color.BLACK);
     }
     
+    public void setLocation(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
     public int getX() {
         return x;
     }
@@ -67,9 +72,19 @@ public class Pixel {
     }
     
     public void paint(Graphics g) {
-        if(isSelected) g.setColor(new Color(42, 42, 42));
-        else g.setColor(color);
+        if (isSelected) {
+            Color selectedColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), 128);
+            g.setColor(selectedColor);
+            g.fillRect(x*width-1, y*width-1, width+3, width+3);
+        }
+
+        g.setColor(color);
         g.fillRect(x*width, y*width, width, width);
+    }
+    
+    public boolean contiene(int x, int y) {
+        return x >= this.x*width && x <= this.x*width + this.width &&
+               y >= this.y*width && y <= this.y*width + this.width;
     }
     
     @Override
@@ -80,5 +95,10 @@ public class Pixel {
             return otro.getX() == x && otro.getY() == y;
         }
         return false;
+    }
+    
+    @Override
+    public String toString () {
+        return "("+x+", "+y+")";
     }
 }

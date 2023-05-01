@@ -15,9 +15,12 @@ public abstract class ShapeView {
     protected ArrayList<Pixel> pixels;
     protected model.shapes.Shape shape;
     protected String name;
+    
+    protected boolean isSelected;
 
     public ShapeView(String name) {
         this.name = name;
+        isSelected = false;
         pixels = new ArrayList<Pixel>();
     }
     
@@ -45,15 +48,29 @@ public abstract class ShapeView {
             int mX = Constants.LX / 2;
             int mY = Constants.LY / 2;
             Pixel pixel = new Pixel(x+mX, -y+mY, Constants.GRID_SCALE, shape.getColor());
+            if(isSelected) pixel.select();
             pixels.add(pixel);
         });
     }
+    
+    public boolean contiene (int x, int y) {
+        for(Pixel p : pixels) {
+            if (p.contiene(x, y)) return true;
+        }
+        return false;
+    }
+    
+    public boolean isSelected () {
+        return isSelected;
+    }
   
     public void select () {
+        isSelected = true;
         pixels.forEach((pixel)->pixel.select());    
     }
     
     public void unselect () {
+        isSelected = false;
         pixels.forEach((pixel)->pixel.unselect());
     }
     

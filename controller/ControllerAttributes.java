@@ -1,4 +1,5 @@
 package controller;
+
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -23,20 +24,23 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     private view.shapes.ShapeView viewShape;
     private model.shapes.Shape modelShape;
     
-    public ControllerAttributes (view.Plane plane, view.OptionsAttributes ops) {
-        this.plane = plane;
-        opsAttrib = ops;
+    private view.ShowShape showShape;
+    
+    public ControllerAttributes (view.App app) {
+        this.plane = app.getPlane();
+        opsAttrib = app.getOpsAttributes();
+        showShape = app.getHeader().getShowShape();
         
-        fill = ops.getFillCheck();
-        escalar = ops.getEscala();
-        colorButton = ops.getColorButton();
-        colorChooser = ops.getColorChooser();
-        popupColor = ops.getPopupColor();
+        fill = opsAttrib.getFillCheck();
+        escalar = opsAttrib.getEscala();
+        colorButton = opsAttrib.getColorButton();
+        colorChooser = opsAttrib.getColorChooser();
+        popupColor = opsAttrib.getPopupColor();
         
-        up = ops.getUpDirecciontion();
-        down = ops.getDownDirecciontion();
-        left = ops.getLelftDirecciontion();
-        right = ops.getRightDirecciontion();
+        up = opsAttrib.getUpDirecciontion();
+        down = opsAttrib.getDownDirecciontion();
+        left = opsAttrib.getLelftDirecciontion();
+        right = opsAttrib.getRightDirecciontion();
         up.addActionListener(this);
         down.addActionListener(this);
         right.addActionListener(this);
@@ -58,7 +62,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     private void updateUIPlane () {
         modelShape.update();
         viewShape.update();
-        //plane.addShape(viewShape, plane.getCurrentShapeIndex());
+        showShape.updateShape();
         plane.updateUI();
     }
     
@@ -67,7 +71,6 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         Object src = e.getSource();
         if (plane.getCurrentShape() != null) {
             updateCurrentShape();
-            //plane.removeCurrentShape();
             if(src.equals(escalar)) {
                 double s = (double)(escalar.getSelectedItem());
                 modelShape.escalar(s);
@@ -85,7 +88,6 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         Object src = itemEvent.getSource();
         if (plane.getCurrentShape() != null) {
             updateCurrentShape();
-            //plane.removeCurrentShape();
             if (src.equals(fill)) {
                 if(itemEvent.getStateChange() == 1) {
                     modelShape.setFill(true);
@@ -104,7 +106,6 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         colorButton.setBackground(color);
         if(plane.getCurrentShape() != null) {
             updateCurrentShape();
-            //plane.removeCurrentShape();
             modelShape.setColor(color);
             updateUIPlane();
         }
@@ -128,7 +129,6 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         int keyCode = e.getKeyCode();
         if(plane.getCurrentShape() != null) {
             updateCurrentShape();
-            //plane.removeCurrentShape();
             if(keyCode == KeyEvent.VK_UP) {
                 modelShape.trasladar(0, 1);
             }else if(keyCode == KeyEvent.VK_DOWN){

@@ -14,16 +14,16 @@ public class Controller {
     private PlaneListener planeL;
     
     private ControllerAttributes ctrAttributes;
-    private ShapeCurrentListener shapeCurrentL;
+
     public Controller (view.App app) {
         this.app = app;
         
         header = this.app.getHeader();
         plane = this.app.getPlane();
-        ctrAttributes = new ControllerAttributes(plane, this.app.getOpsAttributes());
-        shapeCurrentL = new ShapeCurrentListener(plane,header.getShapes(), this.app.getOpsAttributes(), header.getShowShape());
+        ctrAttributes = new ControllerAttributes(app);
+
         buttonsL = new ButtonListener(this.app);
-        planeL = new PlaneListener(this.app, plane);
+        planeL = new PlaneListener(this.app);
         optionShapeL = new OptionShape(header.getOptionsShapes().getOptionsShape(), new model.ShapeMap()){
             @Override
             public void action (model.Shape shape) {
