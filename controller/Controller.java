@@ -20,7 +20,7 @@ public class Controller {
         
         header = this.app.getHeader();
         plane = this.app.getPlane();
-        ctrAttributes = new ControllerAttributes(plane, this.app.getOpsAttributes());
+        ctrAttributes = new ControllerAttributes(app);
 
         buttonsL = new ButtonListener(this.app);
         planeL = new PlaneListener(this.app);

@@ -15,11 +15,13 @@ public class PlaneListener extends MouseAdapter {
     private view.App app;
     private InputShape inputShape;
     private view.OptionsAttributes opsAttrib;
+    private view.ShowShape showShape;
     
     public PlaneListener (view.App app) {
         this.app = app;
         this.plane = this.app.getPlane();
         this.opsAttrib = this.app.getOpsAttributes();
+        this.showShape = this.app.getHeader().getShowShape();
         this.plane.addMouseListener(this);
         this.plane.addMouseMotionListener(this);
     }
@@ -61,6 +63,8 @@ public class PlaneListener extends MouseAdapter {
         if(s != null) {
             plane.setCurrentShape(s);
             updateAttributes(s.getShape());
+            showShape.setShape(s.getShape());
+            showShape.updateShape();
             plane.requestFocus();
             return;
         }
@@ -104,7 +108,10 @@ public class PlaneListener extends MouseAdapter {
     }
     
     private void updateUIShape () {
-        plane.addShape(inputShape.getShape());
+        view.shapes.ShapeView s = inputShape.getShape();
+        plane.addShape(s);
+        showShape.setShape(s.getShape());
+        showShape.updateShape();
         plane.repaint();
     }
     
