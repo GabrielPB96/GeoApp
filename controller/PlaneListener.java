@@ -14,9 +14,12 @@ public class PlaneListener extends MouseAdapter {
     private view.Plane plane;
     private view.App app;
     private InputShape inputShape;
-    public PlaneListener (view.App app, view.Plane plane) {
+    private view.OptionsAttributes opsAttrib;
+    
+    public PlaneListener (view.App app) {
         this.app = app;
-        this.plane = plane;
+        this.plane = this.app.getPlane();
+        this.opsAttrib = this.app.getOpsAttributes();
         this.plane.addMouseListener(this);
         this.plane.addMouseMotionListener(this);
     }
@@ -42,15 +45,30 @@ public class PlaneListener extends MouseAdapter {
         }
     }
     
+    private void updateAttributes (model.shapes.Shape s) {
+        opsAttrib.getFillCheck().setSelected(s.getFill());
+        opsAttrib.getColorChooser().setColor(s.getColor());
+        opsAttrib.getColorButton().setBackground(s.getColor());
+    }
+    
     public void mouseClicked(MouseEvent e) {
         int xc = plane.getWidth() / 2;
         int yc = plane.getHeight() / 2;
         int x = (e.getX()/view.Constants.GRID_SCALE) - (view.Constants.LX/2);
         int y = -(e.getY()/view.Constants.GRID_SCALE-view.Constants.LY/2);
-        System.out.println(x+" "+y);
-        if (app.getPlane().getCurrentShape() != null) {
-            app.getPlane().getCurrentShape().unselect();
-            app.getPlane().setCurrentShape(null); 
+        //System.out.println(x+" "+y);
+        view.shapes.ShapeView s = plane.verificarPixelPulsado(e.getX(), e.getY());
+        if(s != null) {
+            plane.setCurrentShape(s);
+            updateAttributes(s.getShape());
+            plane.requestFocus();
+            return;
+        }
+        else {
+            if(plane.getCurrentShape() != null) {
+                plane.getCurrentShape().unselect();
+                plane.setCurrentShape(null);
+            }
         }
         
         if(inputShape == null) {
@@ -87,8 +105,6 @@ public class PlaneListener extends MouseAdapter {
     
     private void updateUIShape () {
         plane.addShape(inputShape.getShape());
-        //agrega la figura graficada al combobox
-        app.getHeader().getShapes().addItem(inputShape.getShape().getName()+" "+plane.getShapes().size());
         plane.repaint();
     }
     

@@ -26,11 +26,9 @@ public class ButtonListener implements ActionListener {
         if (s.equals(delete)) {
             app.getPlane().removeCurrentShape();
             app.getPlane().updateUI();
-            app.getHeader().getShapes().removeItemAt(app.getPlane().getCurrentShapeIndex());
         } else if (s.equals(clear)) {
             app.getPlane().removeAllShapes();
             app.getPlane().updateUI();
-            app.getHeader().getShapes().removeAllItems();
         }
     }
 }

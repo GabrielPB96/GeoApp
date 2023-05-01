@@ -84,6 +84,19 @@ public class Plane extends JPanel
         repaint();
     }
     
+    public view.shapes.ShapeView verificarPixelPulsado(int x, int y) {
+        for(view.shapes.ShapeView s : shapes ) {
+            if(s.contiene(x, y)) {
+                if(!s.isSelected()) {
+                    s.select();
+                    repaint();
+                }
+                return s;
+            }
+        }
+        return null;
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
