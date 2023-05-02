@@ -44,6 +44,10 @@ public class Circle extends Shape
     
     public void calcularGrosor () {}
     
+    public void rotar(double grados) {
+        center.rotate(grados, 0, 0);
+    }
+    
     @Override
     public String toString () {
         return "Center = " + center.toString() +"    Radio = " + radio;
