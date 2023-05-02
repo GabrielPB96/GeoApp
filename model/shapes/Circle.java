@@ -2,6 +2,7 @@ package model.shapes;
 import model.Punto;
 import model.algorithms.CircleAlgorithm;
 import model.algorithms.CircleMidPoint;
+import java.util.*;
 
 /**
  * Write a description of class Circle here.
@@ -42,7 +43,16 @@ public class Circle extends Shape
         cuatro_vecinos((int)center.getX(), (int)center.getY());
     }
     
-    public void calcularGrosor () {}
+    public void calcularGrosor ()
+    {
+      for(int i = 1; i < grosor; i++) {
+            ArrayList<Punto> up, down;
+            up = ((CircleAlgorithm)algorithm).generatePoints((int) center.getX(), (int) center.getY(),(int) radio +i);
+            //down = ((CircleAlgorithm)algorithm).generatePoints((int) center.getX(), (int) center.getY(),(int) radio -i);
+            points.addAll(up);
+            //points.addAll(down);
+        }
+    }
     
     public void rotar(double grados) {
         center.rotate(grados, (double)0, (double)0);

@@ -18,8 +18,7 @@ public class Line extends Shape {
         this.algorithm = algorithm;
         this.vertexs.add(this.start);
         this.vertexs.add(this.end);
-        points = algorithm.generatePoints((int) start.getX(), (int) start.getY(), (int) end.getX(),
-            (int) end.getY());
+        points = algorithm.generatePoints((int) start.getX(), (int) start.getY(), (int) end.getX(),(int) end.getY());
     }
     
     public Line(Punto start, Punto end) {  
