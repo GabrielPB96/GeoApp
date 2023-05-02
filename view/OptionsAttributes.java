@@ -17,6 +17,7 @@ public class OptionsAttributes extends JPanel{
     
     private JLabel rotate;
     private JTextField grados;
+    public JButton rotar;
     
     private JLabel tagLineStyle;
     private JComboBox lineStyle;
@@ -153,8 +154,10 @@ public class OptionsAttributes extends JPanel{
         rotatePanel = new JPanel();
         
         rotate = new JLabel("Rotar (rad): ");
-        grados = new JTextField(5);
-        createHorizontalPanel(rotatePanel, new JComponent[]{rotate, grados});
+        grados = new JTextField(3);
+        rotar = new JButton("rotar");
+        rotar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        createHorizontalPanel(rotatePanel, new JComponent[]{rotate, grados, rotar});
     }
     
     private void createDirectionsPanel () {
@@ -219,6 +222,10 @@ public class OptionsAttributes extends JPanel{
     
     public JTextField getGrados () {
         return grados;
+    }
+    
+    public JButton getRotar() {
+        return rotar;
     }
     
     public JComboBox getLineStyle () {

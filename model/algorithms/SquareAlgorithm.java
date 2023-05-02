@@ -15,4 +15,5 @@ public abstract class SquareAlgorithm extends Algorithm {
     }
     
     public abstract ArrayList<Punto> generatePoints (int xTL, int yTL, int xBR, int yBR);
+    public abstract ArrayList<Punto> generatePoints (int xTL, int yTL, int xBR, int yBR, int xTR, int yTR, int xBL, int yBL);
 }

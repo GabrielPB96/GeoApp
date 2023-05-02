@@ -50,11 +50,18 @@ public class Triangle extends Shape {
         Punto center = calculateCenterPoint();
         int x = (int)center.getX();
         int y = (int)center.getY();
-        System.out.println(x+", "+y);
         cuatro_vecinos(x, y);
     }
     
     public void calcularGrosor () {}
+    
+    @Override
+    public void rotar(double grados) {
+        Punto c = vertexA;
+        for(Punto p : vertexs){
+            p.rotate(grados, c.x, c.y);
+        }
+    }
     
     @Override
     public String toString () {

@@ -12,33 +12,49 @@ import model.algorithms.SquareAlgorithm;
  */
 public class Square extends Shape {
     private Punto topLeftVertex, bottomRightVertex;
+    private Punto topRinghtVertex;
+    private Punto bottomLeftVertex;
     public Square(Punto topLV, Punto bottomRV, SquareAlgorithm algorithm) {
         this.topLeftVertex = topLV;
         this.bottomRightVertex = bottomRV;
         this.algorithm = algorithm;
         vertexs.add(topLeftVertex);
         vertexs.add(bottomRightVertex);
-        points= algorithm.generatePoints((int) topLeftVertex.getX(), (int) topLeftVertex.getY(), (int) bottomRightVertex.getX(),
-        (int) bottomRightVertex.getY());
+
+        vertexs.add(topRinghtVertex =new Punto(bottomRV.x,topLV.y));
+        vertexs.add(bottomLeftVertex= new Punto(topLV.x,bottomRV.y));
+
+        points= algorithm.generatePoints((int) topLeftVertex.getX(), (int) topLeftVertex.getY(),
+                                         (int) bottomRightVertex.getX(),(int) bottomRightVertex.getY(),
+                                         (int) topRinghtVertex.getX(),(int) topRinghtVertex.getY(),
+                                         (int) bottomLeftVertex.getX(),(int) bottomLeftVertex.getY());
     }
     
     public Square(Punto topLV, Punto bottomRV) {
         this(topLV, bottomRV, new SquareBresenham());
     }
+
     
     public Punto calculateCenterPoint () {
-        int x = (int)((bottomRightVertex.getX() + topLeftVertex.getX()) / 2);
-        int y = (int)((topLeftVertex.getY() + (int)bottomRightVertex.getY()) / 2);
+        int x = (topLeftVertex.x + topRinghtVertex.x + bottomLeftVertex.x + bottomRightVertex.x) / 4;
+        int y = (topLeftVertex.y + topRinghtVertex.y + bottomLeftVertex.y + bottomRightVertex.y) / 4;
         return new Punto(x, y);
     }
     
-    public void recalcular () {
+    public void recalcular(){
         Punto center = calculateCenterPoint();
         int x1 = (int)(topLeftVertex.getX() * factorEscalacion + center.getX() * (1 - factorEscalacion));
         int y1 = (int)(topLeftVertex.getY() * factorEscalacion + center.getY() * (1 - factorEscalacion));
+
         int x2 = (int)(bottomRightVertex.getX() * factorEscalacion + center.getX() * (1 - factorEscalacion));
         int y2 = (int)(bottomRightVertex.getY() * factorEscalacion + center.getY() * (1 - factorEscalacion));
-        points = ((SquareAlgorithm)algorithm).generatePoints(x1, y1, x2, y2);
+
+        int x3 = (int) (topRinghtVertex.getX()*factorEscalacion + center.getX() *(1-factorEscalacion));
+        int y3 = (int) (topRinghtVertex.getY()*factorEscalacion + center.getY() *(1-factorEscalacion));
+
+        int x4 = (int)(bottomLeftVertex.getX()*factorEscalacion + center.getX() *(1-factorEscalacion));
+        int y4 = (int)(bottomLeftVertex.getY()*factorEscalacion + center.getY() *(1-factorEscalacion));
+        points = ((SquareAlgorithm)algorithm).generatePoints(x1, y1, x2, y2,x3,y3,x4,y4);
     }
     
     public void fill () {
@@ -49,6 +65,14 @@ public class Square extends Shape {
     }
     
     public void calcularGrosor () {}
+    
+    @Override
+    public void rotar(double grados) {
+        Punto c = topLeftVertex;
+        for(Punto p : vertexs){
+            p.rotate(grados, c.x, c.y);
+        }
+    }
     
     @Override
     public String toString () {

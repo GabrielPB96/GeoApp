@@ -21,7 +21,7 @@ public abstract class Shape {
         vertexs = new ArrayList<Punto>();
         grosor = 1;
         factorEscalacion = 1;
-        color = new Color(100, 50, 100);
+        color = Color.BLACK;
         tipoTrazado = TipoTrazado.CONTINUO;
         rellenado = false;
     }
@@ -59,8 +59,10 @@ public abstract class Shape {
     }
     
     public void rotar (double grados) {
-        //modificar lista de vertices
-        //primero implementar en la clase Punto
+        Punto c = calculateCenterPoint();
+        for(Punto p : vertexs) {
+            p.rotate(grados, c.x, c.y);
+        }
     }
     
     /*

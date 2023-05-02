@@ -22,7 +22,10 @@ public class ControlsAnimation extends JPanel {
         
         delete.setForeground(Color.WHITE);
         clear.setForeground(Color.WHITE);
-
+        
+        delete.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        clear.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         add(delete);
         add(clear);
     }

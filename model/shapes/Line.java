@@ -26,12 +26,21 @@ public class Line extends Shape {
     }
     
     public Punto calculateCenterPoint () {
-        return null;
+        int x = (int) ((start.getX() + end.getX())/2);
+        int y = (int) ((start.getY() + end.getY())/2);
+        return new Punto(x,y);
     }
     
     public void recalcular () {
         points = ((LineAlgorithm)algorithm).generatePoints((int) start.getX(), (int) start.getY(), (int) end.getX(),
                 (int) end.getY());
+    }
+    @Override
+    public void rotar(double grados) {
+        Punto pc = calculateCenterPoint();
+        start.rotate(grados, (int) pc.getX(),(int) pc.getY());
+        end.rotate(grados, (int) pc.getX(),(int) pc.getY());
+
     }
   
     public void fill () {}
