@@ -61,7 +61,7 @@ public class Triangle extends Shape {
             up = ((TriangleAlgorithm)algorithm).generatePoints((int) vertexA.getX(), (int) vertexA.getY()+i, (int) vertexB.getX(),
                                                                (int) vertexB.getY()+i, (int) vertexC.getX(),(int) vertexC.getY()+i);
             
-            down = ((TriangleAlgorithm)algorithm).generatePoints((int) vertexA.getX(), (int) vertexA.getY()-i, (int) vertexB.getX(),
+            down = ((TriangleAlgorithm)algorithm).generatePoints((int) vertexA.getX(), (int) vertexA.getY()-i, (int) vertexB.getX()-i,
                                                                  (int) vertexB.getY()-i, (int) vertexC.getX(),(int) vertexC.getY()-i);
             points.addAll(up);
             points.addAll(down);

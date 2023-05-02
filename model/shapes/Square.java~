@@ -77,7 +77,7 @@ public class Square extends Shape {
             down = ((SquareAlgorithm)algorithm).generatePoints((int)topLeftVertex.getX()+i, (int) topLeftVertex.getY()-i,
                                                                (int) bottomRightVertex.getX()-i,(int) bottomRightVertex.getY()+i,
                                                                (int) topRinghtVertex.getX()-i,(int) topRinghtVertex.getY()-i,
-                                                               (int) bottomLeftVertex.getX()+i,(int) bottomLeftVertex.getY()+i);
+                                                               (int) bottomLeftVertex.getX()+i,(int) bottomLeftVertex.getY()+1);
             points.addAll(up);
             points.addAll(down);
         }
