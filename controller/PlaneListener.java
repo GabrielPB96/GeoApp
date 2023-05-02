@@ -88,7 +88,7 @@ public class PlaneListener extends MouseAdapter {
             }
         }
         
-        Punto p = new Punto(x, y);
+        Punto p = new Punto((double)x, (double)y);
         inputShape.addInput(p);
         plane.pushPixelOrigen((int)p.getX(), (int)p.getY());
         

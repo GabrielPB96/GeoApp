@@ -22,20 +22,20 @@ public class LineBasic extends LineAlgorithm
         dy = yF - yI;
         dx = xF - xI;
         x = xI; y = yI;
-        points.add(new Punto(x, y));
+        points.add(new Punto((double)x, (double)y));
         pValues.add(0);
         if (dx > dy) { 
             while (x < xF) {
                 x = x + 1;
                 y = (int)(dy/dx * (x - xI) + yI);
-                points.add(new Punto(x, y));
+                points.add(new Punto((double)x, (double)y));
                 pValues.add(0);
             }
         } else {
             while (y < yF) {
                 y = y + 1;
                 x = (int)(dx/dy * (y - yI) + xI);
-                points.add(new Punto(x, y));
+                points.add(new Punto((double)x, (double)y));
                 pValues.add(0);
             }
         }

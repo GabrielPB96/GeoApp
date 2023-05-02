@@ -32,7 +32,7 @@ public class LineBresenham extends LineAlgorithm
             stepx = 1;
         x = xI;
         y = yI;
-        points.add(new Punto(x, y));
+        points.add(new Punto((double)x, (double)y));
         
         if(dx>dy){
             p = 2*dy - dx;
@@ -48,7 +48,7 @@ public class LineBresenham extends LineAlgorithm
                     y = y + stepy;
                     p = p + incNE;
                 }
-                points.add(new Punto(x, y));
+                points.add(new Punto((double)x, (double)y));
                 pValues.add(p);
             }
         }
@@ -66,7 +66,7 @@ public class LineBresenham extends LineAlgorithm
                     x = x + stepx;
                     p = p + incNE;
                 }
-                points.add(new Punto(x, y));
+                points.add(new Punto((double)x, (double)y));
                 pValues.add(p);
             }
         }

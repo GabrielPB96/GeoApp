@@ -21,10 +21,10 @@ public class Square extends Shape {
         vertexs.add(topLeftVertex);
         vertexs.add(bottomRightVertex);
 
-        vertexs.add(topRinghtVertex =new Punto(bottomRV.x,topLV.y));
-        vertexs.add(bottomLeftVertex= new Punto(topLV.x,bottomRV.y));
+        vertexs.add(topRinghtVertex =new Punto((double)bottomRV.x,(double)topLV.y));
+        vertexs.add(bottomLeftVertex= new Punto((double)topLV.x,(double)bottomRV.y));
 
-        points= algorithm.generatePoints((int) topLeftVertex.getX(), (int) topLeftVertex.getY(),
+        points= algorithm.generatePoints((int)topLeftVertex.getX(), (int) topLeftVertex.getY(),
                                          (int) bottomRightVertex.getX(),(int) bottomRightVertex.getY(),
                                          (int) topRinghtVertex.getX(),(int) topRinghtVertex.getY(),
                                          (int) bottomLeftVertex.getX(),(int) bottomLeftVertex.getY());
@@ -36,8 +36,8 @@ public class Square extends Shape {
 
     
     public Punto calculateCenterPoint () {
-        int x = (topLeftVertex.x + topRinghtVertex.x + bottomLeftVertex.x + bottomRightVertex.x) / 4;
-        int y = (topLeftVertex.y + topRinghtVertex.y + bottomLeftVertex.y + bottomRightVertex.y) / 4;
+        double x = (topLeftVertex.x + topRinghtVertex.x + bottomLeftVertex.x + bottomRightVertex.x) / 4;
+        double y = (topLeftVertex.y + topRinghtVertex.y + bottomLeftVertex.y + bottomRightVertex.y) / 4;
         return new Punto(x, y);
     }
     

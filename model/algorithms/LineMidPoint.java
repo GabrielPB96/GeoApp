@@ -41,7 +41,7 @@ public class LineMidPoint extends LineAlgorithm {
             p = dy - 2 * dx;
         }
 
-        points.add(new Punto(x, y));
+        points.add(new Punto((double)x, (double)y));
         pValues.add(p);
         if (dx > dy) {
             while (x != xF) {
@@ -52,7 +52,7 @@ public class LineMidPoint extends LineAlgorithm {
                     p = p + incSup;
                     y = y + 1;
                 }
-                points.add(new Punto(x, y));
+                points.add(new Punto((double)x, (double)y));
                 pValues.add(p);
             }
         } else {
@@ -64,7 +64,7 @@ public class LineMidPoint extends LineAlgorithm {
                 } else {
                     p = p + incInf;
                 }
-                points.add(new Punto(x, y));
+                points.add(new Punto((double)x, (double)y));
                 pValues.add(p);
             }
         }

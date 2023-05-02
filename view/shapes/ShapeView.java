@@ -47,7 +47,7 @@ public abstract class ShapeView {
             int y = (int) point.getY();
             int mX = Constants.LX / 2;
             int mY = Constants.LY / 2;
-            Pixel pixel = new Pixel(x+mX, -y+mY, Constants.GRID_SCALE, shape.getColor());
+            Pixel pixel = new Pixel((double)x+mX, (double)-y+mY, Constants.GRID_SCALE, shape.getColor());
             if(isSelected) pixel.select();
             pixels.add(pixel);
         });

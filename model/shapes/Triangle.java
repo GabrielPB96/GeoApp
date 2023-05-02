@@ -28,8 +28,8 @@ public class Triangle extends Shape {
     }
     
     public Punto calculateCenterPoint () {
-        int x = (int)((vertexA.getX() + vertexB.getX() + vertexC.getX()) / 3);
-        int y = (int)((vertexA.getY() + vertexB.getY() + vertexC.getY()) / 3);
+        double  x = ((vertexA.getX() + vertexB.getX() + vertexC.getX()) / 3);
+        double y = ((vertexA.getY() + vertexB.getY() + vertexC.getY()) / 3);
         return new Punto(x, y);
     }
     

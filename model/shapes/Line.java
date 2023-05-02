@@ -28,7 +28,7 @@ public class Line extends Shape {
     public Punto calculateCenterPoint () {
         int x = (int) ((start.getX() + end.getX())/2);
         int y = (int) ((start.getY() + end.getY())/2);
-        return new Punto(x,y);
+        return new Punto((double)x,(double)y);
     }
     
     public void recalcular () {

@@ -1,6 +1,7 @@
 package model;
 import java.awt.Point;
-
+import java.awt.geom.Point2D;
+import java.text.DecimalFormat;
 
 /**
  * Write a description of class Punto here.
@@ -8,25 +9,25 @@ import java.awt.Point;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Punto extends Point{
-    public Punto(int x, int y) {
+public class Punto extends Point2D.Double {
+    public Punto(double x, double y) {
         super(x, y);
     }
 
-    public void rotate (double grados,int xPuntoRotar,int yPuntoRotar) {
+    public void rotate (double grados,double xPuntoRotar,double yPuntoRotar) {
         double seno = Math.sin(Math.toRadians(grados));
         double coseno = Math.cos(Math.toRadians(grados));
-        int auxX = this.x;
-        int auxY = this.y;
-        double xvar = (int) (xPuntoRotar + (auxX - xPuntoRotar)*coseno - (auxY - yPuntoRotar)*seno);
-        double yvar = (int) (yPuntoRotar + (auxX - xPuntoRotar)*seno + (auxY - yPuntoRotar)*coseno);
-        x = (int) xvar;
-        y = (int) yvar;
+        double auxX = this.x;
+        double auxY = this.y;
+        double xvar = (xPuntoRotar + (auxX - xPuntoRotar)*coseno - (auxY - yPuntoRotar)*seno);
+        double yvar = (yPuntoRotar + (auxX - xPuntoRotar)*seno + (auxY - yPuntoRotar)*coseno);
+        x = xvar;
+        y = yvar;
     }
     
     public void traslate (int dx, int dy) {
-        int newX = this.x + dx;
-        int newY = this.y + dy;
+        double newX = this.x + dx;
+        double newY = this.y + dy;
         this.setLocation(newX, newY);
     }
     
@@ -42,6 +43,8 @@ public class Punto extends Point{
     
     @Override
     public String toString () {
-        return "("+x+", "+y+")";
+        double xP = (double)Math.round(x * 100d) / 100d;
+        double yP = (double)Math.round(y * 100d) / 100d;
+        return "("+xP+", "+yP+")";
     }
 }
