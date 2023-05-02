@@ -67,7 +67,6 @@ public class InputListener implements DocumentListener {
                 
                 p.setGraphic(new view.GraphicCircle(p.getWidth() / 2, p.getHeight()/2, Color.RED, xC, yC, radio));
             }
-            app.runAlgorithm();
             p.repaint();
         }
     }

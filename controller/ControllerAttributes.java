@@ -22,6 +22,7 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
     private JPopupMenu popupColor;
     
     private JComboBox grosor;
+    private JComboBox lineStyle;
     
     private view.shapes.ShapeView viewShape;
     private model.shapes.Shape modelShape;
@@ -56,6 +57,9 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
         grosor = opsAttrib.getGrosor();
         grosor.addActionListener(this);
         
+        lineStyle = opsAttrib.getLineStyle();
+        lineStyle.addActionListener(this);
+        
         this.plane.addKeyListener(this);
     }
     
@@ -84,6 +88,15 @@ public class ControllerAttributes extends KeyAdapter implements ActionListener, 
             } else if(src.equals(grosor)) {
                 int g = (int)(grosor.getSelectedItem());
                 modelShape.setGrosor(g);
+            } else if(src.equals(lineStyle)) {
+                String style = (String)lineStyle.getSelectedItem();
+                if (style.equals("Continua")) {
+                    modelShape.setTipoTrazado(model.shapes.TipoTrazado.CONTINUO);
+                } else if(style.equals("Segmentada")) {
+                    modelShape.setTipoTrazado(model.shapes.TipoTrazado.SEGMENTADO);
+                } else {
+                    modelShape.setTipoTrazado(model.shapes.TipoTrazado.PUNTEADO);
+                }
             }
             eventMoved(src);
             updateUIPlane();
