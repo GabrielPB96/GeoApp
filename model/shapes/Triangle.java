@@ -57,7 +57,7 @@ public class Triangle extends Shape {
     
     @Override
     public void rotar(double grados) {
-        Punto c = vertexA;
+        Punto c = calculateCenterPoint();
         for(Punto p : vertexs){
             p.rotate(grados, c.x, c.y);
         }

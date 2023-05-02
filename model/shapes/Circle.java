@@ -45,7 +45,7 @@ public class Circle extends Shape
     public void calcularGrosor () {}
     
     public void rotar(double grados) {
-        center.rotate(grados, 0, 0);
+        center.rotate(grados, (double)0, (double)0);
     }
     
     @Override
