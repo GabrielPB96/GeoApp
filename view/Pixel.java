@@ -5,14 +5,15 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Cursor;
+import java.awt.Graphics2D;
 
 public class Pixel {
     private int width;
-    private int x, y;
+    private double x, y;
     private Color color;
     private boolean isSelected;
     private view.shapes.ShapeView parentShape;
-    public Pixel(int x, int y, int width, Color color){
+    public Pixel(double x, double y, int width, Color color){
         this.width = width;
         this.x = x;
         this.y = y;
@@ -21,20 +22,20 @@ public class Pixel {
         parentShape = null;
     }
     
-    public Pixel(int x, int y, int width){
+    public Pixel(double x, double y, int width){
         this(x, y, width, Color.BLACK);
     }
     
-    public void setLocation(int x, int y) {
+    public void setLocation(double x, double y) {
         this.x = x;
         this.y = y;
     }
     
-    public int getX() {
+    public double getX() {
         return x;
     }
     
-    public int getY() {
+    public double getY() {
         return y;
     }
     
@@ -46,11 +47,11 @@ public class Pixel {
         return parentShape;
     }
     
-    public int getXPlane () {
+    public double getXPlane () {
         return x;
     }
     
-    public int getYPlane () {
+    public double getYPlane () {
         return y;
     }
     
@@ -60,7 +61,7 @@ public class Pixel {
     
     public void paintFill(Graphics g) {
         g.setColor(color);
-        g.fillRect(x*width, y*width, width, width);
+        g.fillRect((int)(x*width), (int)(y*width), width, width);
     }
     
     public void select () {
@@ -75,11 +76,11 @@ public class Pixel {
         if (isSelected) {
             Color selectedColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), 128);
             g.setColor(selectedColor);
-            g.fillRect(x*width-1, y*width-1, width+3, width+3);
+            g.fillRect((int)(x*width-1), (int)(y*width-1), width+3, width+3);
         }
 
         g.setColor(color);
-        g.fillRect(x*width, y*width, width, width);
+        g.fillRect((int)(x*width), (int)(y*width), width, width);
     }
     
     public boolean contiene(int x, int y) {
