@@ -107,7 +107,6 @@ public class Plane extends JPanel
         g.setColor(Color.BLACK);
         g.drawLine(0, centroY, getWidth(), centroY);
         g.drawLine(centroX, 0, centroX, getHeight());
-        //pixeles.forEach((pixel) -> pixel.paintFill(g));
         shapes.forEach((s)->s.paint(g));
         pixelesOrigen.forEach((pixel) -> pixel.paintFill(g));
         if (graphic != null) graphic.paint((Graphics2D)g);

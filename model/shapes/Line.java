@@ -2,6 +2,7 @@ package model.shapes;
 import model.Punto;
 import model.algorithms.LineAlgorithm;
 import model.algorithms.LineBresenham;
+import java.util.ArrayList;
 
 /**
  * Write a description of class Line here.
@@ -45,7 +46,17 @@ public class Line extends Shape {
   
     public void fill () {}
     
-    public void calcularGrosor () {}
+    public void calcularGrosor () {
+        for(int i = 1; i < grosor; i++) {
+            ArrayList<Punto> up, down;
+            up = ((LineAlgorithm)algorithm).generatePoints((int) start.getX(), (int) start.getY() + i, (int) end.getX(),
+                (int) end.getY() + i);
+            down = ((LineAlgorithm)algorithm).generatePoints((int) start.getX(), (int) start.getY() - i, (int) end.getX(),
+                (int) end.getY() - i);
+            points.addAll(up);
+            points.addAll(down);
+        }
+    }
     
     @Override
     public String toString () {

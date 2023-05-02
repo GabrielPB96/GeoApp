@@ -72,6 +72,19 @@ public abstract class Shape {
     
     public void calcularTipoTrazado () {
         //Actualizar la lista points
+        ArrayList<Punto> newPoints = new ArrayList<Punto>();
+        if(tipoTrazado == TipoTrazado.PUNTEADO) {
+            for(int i = 0; i < points.size(); i+=2) {
+                newPoints.add(new Punto(points.get(i).x, points.get(i).y));
+            }
+            points = newPoints;
+        } else if (tipoTrazado == TipoTrazado.SEGMENTADO) {
+            for(int i = 0; i < points.size(); i+=4) {
+                newPoints.add(new Punto(points.get(i).x, points.get(i).y));
+                if(i + 1 < points.size())newPoints.add(new Punto(points.get(i+1).x, points.get(i+1).y));
+            }
+            points = newPoints;
+        }
     }
     
     public void escalar (double s) {
@@ -88,7 +101,7 @@ public abstract class Shape {
             fill();
         }
         calcularGrosor();
-        calcularTipoTrazado ();
+        calcularTipoTrazado();
     }
     
     public void update () {

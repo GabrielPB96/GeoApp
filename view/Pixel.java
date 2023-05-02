@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Cursor;
+import java.awt.Graphics2D;
 
 public class Pixel {
     private int width;
@@ -21,11 +22,11 @@ public class Pixel {
         parentShape = null;
     }
     
-    public Pixel(int x, int y, int width){
+    public Pixel(double x, double y, int width){
         this(x, y, width, Color.BLACK);
     }
     
-    public void setLocation(int x, int y) {
+    public void setLocation(double x, double y) {
         this.x = x;
         this.y = y;
     }

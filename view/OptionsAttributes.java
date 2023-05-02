@@ -73,8 +73,12 @@ public class OptionsAttributes extends JPanel{
         mainBox.add(Box.createVerticalGlue());
 
         add(mainBox, BorderLayout.CENTER);
-        add(new JPanel(), BorderLayout.WEST);
-        add(new JPanel(), BorderLayout.EAST);
+        JPanel p = new JPanel();
+        JPanel p1 = new JPanel();
+        p.setBackground(Color.WHITE);
+        p1.setBackground(Color.WHITE);
+        add(p, BorderLayout.WEST);
+        add(p1, BorderLayout.EAST);
     }
     
     private void createEscalaPanel () {
