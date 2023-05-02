@@ -51,6 +51,15 @@ public class PlaneListener extends MouseAdapter {
         opsAttrib.getFillCheck().setSelected(s.getFill());
         opsAttrib.getColorChooser().setColor(s.getColor());
         opsAttrib.getColorButton().setBackground(s.getColor());
+        String lineS = "";
+        if (s.getTipoTrazado() == model.shapes.TipoTrazado.CONTINUO){
+            lineS = "Continua";
+        } else if (s.getTipoTrazado() == model.shapes.TipoTrazado.SEGMENTADO) {
+            lineS = "Segmentada";
+        } else {
+            lineS = "Punteada";
+        }
+        opsAttrib.getLineStyle().setSelectedItem(lineS);
     }
     
     public void mouseClicked(MouseEvent e) {

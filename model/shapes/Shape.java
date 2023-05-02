@@ -39,6 +39,9 @@ public abstract class Shape {
         grosor = t;
     }
     
+    public TipoTrazado getTipoTrazado () {
+        return tipoTrazado;
+    }
     public boolean getFill () {
         return rellenado;
     }
