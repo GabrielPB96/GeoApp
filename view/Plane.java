@@ -20,8 +20,6 @@ public class Plane extends JPanel
     
     private int currentShapeIndex;
     
-    private Pixel pixel = new Pixel(0.5,0.5, 5);
-    
     public Plane () {
         shapes = new ArrayList<view.shapes.ShapeView>();
         pixelesOrigen = new Stack<Pixel>();
@@ -109,7 +107,6 @@ public class Plane extends JPanel
         g.setColor(Color.BLACK);
         g.drawLine(0, centroY, getWidth(), centroY);
         g.drawLine(centroX, 0, centroX, getHeight());
-        pixel.paint(g);
         shapes.forEach((s)->s.paint(g));
         pixelesOrigen.forEach((pixel) -> pixel.paintFill(g));
         if (graphic != null) graphic.paint((Graphics2D)g);
